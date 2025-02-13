@@ -1,0 +1,101 @@
+.user-management {
+    padding: 20px;
+    color: #333;
+    background: linear-gradient(180deg, #272727 0%, #414141 45.5%, #292929 100%);
+    min-height: 100vh;
+  }
+  
+  /* Search Bar */
+  .search-container {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: left;
+  }
+  
+  .search-input {
+    width: 80%;
+    padding: 10px;
+    background: #FDFDFD;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Page Titles */
+  .page-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .page-subtitle {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 20px;
+  }
+  
+  /* Table */
+  .user-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .user-table th, .user-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .user-table th {
+    background: #ddd;
+  }
+  
+  /* Buttons */
+  .add-user-btn {
+    background: transparent;
+    color: white;
+    border: 2px solid #3BC1FF;
+    border-image-source: linear-gradient(315deg, #C61AFF 0%, #3BC1FF 53.5%, #FFFFFF 100%);
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .add-user-btn:hover {
+    background: gray;
+  }
+  
+  /* Action Buttons */
+  .view-btn {
+    background: transparent;
+    color: #007bff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .delete-btn {
+    background: transparent;
+    color: #d32f2f;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .edit-btn {
+    background: transparent;
+    color: darkgray;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  

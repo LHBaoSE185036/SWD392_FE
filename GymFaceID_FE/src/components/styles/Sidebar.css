@@ -1,0 +1,81 @@
+.mainLaySidebar {
+    background: #000000;
+    position: fixed;
+}
+
+.mainLaySidebar .ant-layout-sider-children {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.mainLaySidebar .ant-layout-sider-children .logo {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    width: 100%;
+    height: 150px;
+}
+.mainLaySidebar .ant-layout-sider-children .logo img {
+    width: 85%;
+    height: 150px;
+}
+
+.mainLaySidebar .ant-layout-sider-children .ant-menu.ant-menu-root.ant-menu-inline.ant-menu-dark {
+    background-color: transparent;
+}
+
+.mainLaySidebar .ant-layout-sider-children .ant-menu.ant-menu-root.ant-menu-inline.ant-menu-dark .ant-menu-item {
+    color: white;
+    font-family: Barlow;
+    font-weight: 800;
+    font-size: 15px;
+    line-height: 30px;
+    letter-spacing: 0px;
+    transition: margin 0.6s ease;
+}
+.mainLaySidebar .ant-layout-sider-children .ant-menu.ant-menu-root.ant-menu-inline.ant-menu-dark .ant-menu-item.ant-menu-item-selected {
+    border: 2px solid white;
+    margin: 10px 0;
+    transition: margin 0.4s ease, transform 0.6s ease;
+}
+.mainLaySidebar .ant-layout-sider-children .ant-menu.ant-menu-root.ant-menu-inline.ant-menu-dark .ant-menu-item.ant-menu-item-selected:first-child {
+    color: black;
+    background-color: yellow;
+}
+.mainLaySidebar .ant-layout-sider-children .ant-menu.ant-menu-root.ant-menu-inline.ant-menu-dark .ant-menu-item.ant-menu-item-selected:nth-child(2) {
+    color: black;
+    background-color: greenyellow;
+}
+.mainLaySidebar .ant-layout-sider-children .ant-menu.ant-menu-root.ant-menu-inline.ant-menu-dark .ant-menu-item.ant-menu-item-selected:nth-child(3) {
+    color: black;
+    background-color: #1574f9;
+}
+.mainLaySidebar .ant-layout-sider-children .ant-menu.ant-menu-root.ant-menu-inline.ant-menu-dark .ant-menu-item.ant-menu-item-selected:nth-child(4) {
+    color: black;
+    background-color: orange;
+}
+.mainLaySidebar .ant-layout-sider-children .ant-menu.ant-menu-root.ant-menu-inline.ant-menu-dark .ant-menu-item.ant-menu-item-selected:last-child {
+    color: black;
+    background-color: #f539ff;
+}
+.mainLaySidebar .ant-layout-sider-children .ant-menu.ant-menu-root.ant-menu-inline.ant-menu-dark .ant-menu-item.ant-menu-item-active.ant-menu-item-selected {
+    transform: scale(1.02) translateX(2%);
+    transition: transform 0.6s ease;
+}
+
+.mainLaySidebar .ant-layout-sider-children .collapseBtn {
+
+    display: none;
+
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    background: #222222;
+    color: #ffff;
+    width: 42px;
+    border-radius: 12px;
+    transform: translateY(600%);
+}
