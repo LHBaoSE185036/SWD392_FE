@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles/UserManagement.css";
+import "./styles/UserTable.css";
 import { DeleteOutline, DriveFileRenameOutline, VisibilityOutlined } from "@mui/icons-material";
 
 const users = [
