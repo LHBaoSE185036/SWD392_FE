@@ -11,7 +11,7 @@ const MainLayout = () => {
     <Layout style={{ minHeight: "100vh" }} className='mainLayout'>
       <Sidebar />
       <Layout>
-        <Content style={{ marginLeft: "200px" }}>
+        <Content className='main-hero'>
           <UserManagement />
         </Content>
       </Layout>

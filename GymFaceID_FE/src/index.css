@@ -22,6 +22,17 @@ a:hover {
   color: #535bf2;
 }
 
+[data-theme="light"] {
+  --bg-color: #FFFF;
+  --secondary-bg-color: #FFf5f5f5;
+  --foreground-color: #ffffff;
+  --primary-text-color: #000000;
+  --secondary-text-color: #444444;
+  --side-menu-hover-color: #0000001a;
+  --side-menu-active-color: #cccccc9d;
+  --border-color: #404040;
+}
+
 body {
   margin: 0;
   display: flex;

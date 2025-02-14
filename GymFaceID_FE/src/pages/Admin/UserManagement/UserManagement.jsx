@@ -39,7 +39,10 @@ const UserManagement = () => {
         </button>
       </div>
       
-      <UserTable />
+      <div className='table-container'>
+        <UserTable />
+      </div>
+      
 
       
     </div>

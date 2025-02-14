@@ -1,3 +1,22 @@
+.ant-layout {
+    background: #000000;
+    animation: slide-in-bg 2s ease-in-out forwards;
+    animation-iteration-count: 1;
+}
+@keyframes slide-in-bg {
+    0% {
+        background: linear-gradient(180deg, #272727 0%, #414141 45.5%, #292929 100%);
+    }
+  
+    50% {
+        background: #000000;
+    }
+  
+    100% {
+        background: #000000;
+    }
+}
+
 .mainLayout {
     position: absolute;
     left: 0;
@@ -5,4 +24,6 @@
     width: 100%;
 }
 
-
+.main-hero {
+    margin-left: 220px;
+}
