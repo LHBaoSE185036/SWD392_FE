@@ -1,20 +1,5 @@
 .ant-layout {
     background: var(--bg-color);
-    animation: slide-in-bg 2s ease-in-out forwards;
-    animation-iteration-count: 1;
-}
-@keyframes slide-in-bg {
-    0% {
-        background: linear-gradient(180deg, #272727 0%, #414141 45.5%, #292929 100%);
-    }
-  
-    50% {
-        background: var(--bg-color);
-    }
-  
-    100% {
-        background: var(--bg-color);
-    }
 }
 
 .mainLayout {

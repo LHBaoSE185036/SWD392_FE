@@ -10,6 +10,8 @@
     margin: 20px 0;
     display: flex;
     justify-content: left;
+    align-items: center;
+    gap: 10px;
     height: 40px;
     /* transform: translateY(100%);
     opacity: 0;
@@ -17,15 +19,78 @@
     animation-iteration-count: 1;
     animation-delay: 1s; */
 }
+
+  .search-container .user-container {
+    border-left: 1px solid gray;
+    padding-left: 10px;
+    font-size: 18px;
+  }.search-container .user-container span {font-weight: 800;}
   
-  .search-input {
+  .search-input-border {
     width: 80%;
-    padding: 10px;
-    background: #FDFDFD;
-    border: 1px solid #EBEBEB;
-    border-radius: 5px;
+    padding: 1px;
+    border-radius: 10px;
+    background: darkgray;
+    position: relative;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    z-index: 1;
   }
+
+  .search-input {
+    width: 100%;
+    padding: 12px;
+    background: #FDFDFD;
+    color: gray;
+    border: none; outline: none;
+    border-radius: 9px;
+    margin: 0;
+  }
+  .search-input::placeholder {transform: translateY(0%); transition: transform 0.3s ease;}
+  .search-input:focus-within::placeholder {transform: translateY(-200%); transition: transform 0.5s ease;}
   
+  .search-icon {
+    position: absolute;
+    color: #555;
+    margin: 0 10px;
+  }
+
+  @property --angle{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  .search-input-border-text {background-color: white; color: #007bff; position: absolute; transform: translateY(0); padding: 2px 15px 5px 15px; border-radius: 8px 8px 0 0; border: 1px solid #007bff; transition: transform 0.4s ease;}
+  .search-container:has(.search-input:focus-within) .search-input-border-text {transform: translateY(-30px); transition: transform 0.3s ease;}
+  
+  .search-input-border::after, .search-input-border::before{
+    content: '';
+    position: absolute;
+    height: 33px;
+    width: 1013px;
+    background-image: conic-gradient(from var(--angle), #6bfbce, #b0ceff, #00aaff, #006aff, transparent );
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 4px;
+    border-radius: 10px;
+    animation: 3s spin linear infinite;
+  }
+  .search-input-border::before{
+    filter: blur(1.5rem);
+    opacity: 0.5;
+  }
+  @keyframes spin{
+    from{
+      --angle: 0deg;
+    }
+    to{
+      --angle: 360deg;
+    }
+  }
   /* Page Titles */
   .main-content-title-card{
     margin: 40px 0 20px 0;
@@ -50,7 +115,7 @@
 
   .page-title {
     font-weight: bold;
-    color: #FFFFFF;
+    color: var(--primary-text-color);
     font-weight: 600;
     font-size: 64px;
     line-height: 76.8px;
@@ -61,7 +126,7 @@
   .page-subtitle {
     margin: 0;
     font-size: 14px;
-    color: #A3A3A3;
+    color: var(--secondary-text-color);
     font-weight: 500;
     font-size: 24px;
     line-height: 28.8px;
@@ -106,6 +171,7 @@
     align-items: center;
     gap: 8px;
     border: none;
+    transition: all 0.5s ease;
   }
   
   .add-user-btn::before {
@@ -126,7 +192,7 @@
   .add-user-btn:hover {
     color: #34A922;
     background: linear-gradient(110.68deg, #FFFFFF 22.59%, #E2E2E2 77.41%);
-    transition: all 0.5s ease;
+    transition: all 0.3s ease;
   }
   
   .add-user-icon {

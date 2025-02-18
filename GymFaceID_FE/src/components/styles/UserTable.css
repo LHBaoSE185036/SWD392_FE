@@ -1,4 +1,5 @@
 .user-table {
+    box-shadow: 6px 8px 15px 4px rgba(0,0,0,0.5);
     width: 95%;
     background-color: transparent;
 }

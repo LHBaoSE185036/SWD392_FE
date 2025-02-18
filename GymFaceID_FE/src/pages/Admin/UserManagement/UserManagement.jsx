@@ -1,7 +1,7 @@
 import React from 'react'
 import './UserManagement.css'
 import UserTable from '../../../components/UserTable';
-import { PersonAddAlt1Outlined } from '@mui/icons-material';
+import { PersonAddAlt1Outlined, SearchOffOutlined, SearchOutlined } from '@mui/icons-material';
 
 import PFP from '../../../assets/placeholder.png'
 
@@ -9,8 +9,12 @@ const UserManagement = () => {
   return (
     <div className="user-management">
       <div className="search-container">
-        <input type="text" placeholder="Search here" className="search-input" />
-        <div className='user-container'>Hello, <span>Admin</span> <img src={PFP} alt="PFP" /></div>
+        <div className="search-input-border-text">Search here</div>
+        <div className="search-input-border">
+          <input type="text" placeholder="Search here" className="search-input" />
+          <SearchOutlined className='search-icon'/>
+        </div>
+        <div className='user-container'>Hello, <span>Admin</span> {/*<img src={PFP} alt="PFP" />*/}</div>
       </div>
 
       <div className='main-content-title-card'>
