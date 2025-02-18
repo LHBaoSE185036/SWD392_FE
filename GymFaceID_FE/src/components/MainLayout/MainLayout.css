@@ -1,5 +1,5 @@
 .ant-layout {
-    background: #000000;
+    background: var(--bg-color);
     animation: slide-in-bg 2s ease-in-out forwards;
     animation-iteration-count: 1;
 }
@@ -9,11 +9,11 @@
     }
   
     50% {
-        background: #000000;
+        background: var(--bg-color);
     }
   
     100% {
-        background: #000000;
+        background: var(--bg-color);
     }
 }
 

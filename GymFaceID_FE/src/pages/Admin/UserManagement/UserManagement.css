@@ -1,7 +1,7 @@
 .user-management {
     padding: 20px;
     color: #333;
-    background: linear-gradient(180deg, #272727 0%, #414141 45.5%, #292929 100%);
+    background: var(--bg-color);
     min-height: 100vh;
   }
   
@@ -22,7 +22,7 @@
     width: 80%;
     padding: 10px;
     background: #FDFDFD;
-    border: 1px solid #ccc;
+    border: 1px solid #EBEBEB;
     border-radius: 5px;
   }
   
@@ -90,8 +90,8 @@
   /* Buttons */
   .add-user-btn {
     position: relative;
-    background: linear-gradient(110.68deg, #6E5BFF 22.59%, #765AFF 51.1%, #5A38FF 77.41%);
-    color: white;
+    background: linear-gradient(110.68deg, #FFFFFF 22.59%, #E2E2E2 77.41%);
+    color: #00FF44;
     font-weight: 600;
     font-size: 18px;
     line-height: 12px;
@@ -106,25 +106,15 @@
     align-items: center;
     gap: 8px;
     border: none;
-    animation: bgcol-change-start 0.8s ease-in-out;
-    animation-iteration-count: 1;
   }
-  @keyframes bgcol-change-start {
-    0% {
-      background: #3BC1FF;
-    }
-    100% {
-      background: #5A38ff;
-    }
-  }
-
+  
   .add-user-btn::before {
     content: "";
     position: absolute;
     inset: 0;
     padding: 2px;
     border-radius: 12px;
-    background: linear-gradient(315deg, #C61AFF 0%, #3BC1FF 53.5%, #FFFFFF 100%);
+    background: linear-gradient(315deg, #00FF44 0%, #34A922 40%, #09FF00 100%);
     -webkit-mask: 
       linear-gradient(white, white) content-box, 
       linear-gradient(white, white);
@@ -134,20 +124,9 @@
   }
   
   .add-user-btn:hover {
-    background: #5A38ff;
-    animation: bgcol-change 0.6s ease-in-out forwards;
-    animation-iteration-count: 1;
-    animation-delay: 0.5s;
+    color: #34A922;
+    background: linear-gradient(110.68deg, #FFFFFF 22.59%, #E2E2E2 77.41%);
     transition: all 0.5s ease;
-  }
-  @keyframes bgcol-change {
-    0% {
-      background: #5A38ff;
-    }
-  
-    100% {
-      background: #3BC1FF;
-    }
   }
   
   .add-user-icon {
@@ -158,13 +137,14 @@
     border-radius: 50%;
     background: white;
   }
+
   .add-user-icon::before {
     content: "";
     position: absolute;
     inset: 0;
     padding: 2px;
     border-radius: 50%;
-    background: linear-gradient(315deg, #C61AFF 0%, #3BC1FF 53.5%, #FFFFFF 100%);
+    background: linear-gradient(315deg, #00FF44 0%, #34A922 40%, #09FF00 100%);
     -webkit-mask: 
       linear-gradient(white, white) content-box, 
       linear-gradient(white, white);

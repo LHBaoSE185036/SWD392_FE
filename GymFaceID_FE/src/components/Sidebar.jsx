@@ -5,7 +5,7 @@ import { CalendarMonthOutlined, DriveFileRenameOutline, FreeBreakfastOutlined, S
 import { useNavigate } from "react-router-dom";
 import { useSwipeable } from 'react-swipeable';
 
-import Logo from '../assets/MainLogo.png'
+import Logo from '../assets/LightMainLogo.png'
 import './styles/Sidebar.css'
 const {Sider} = Layout
 
