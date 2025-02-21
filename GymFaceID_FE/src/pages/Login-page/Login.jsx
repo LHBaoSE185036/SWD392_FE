@@ -27,8 +27,9 @@ export default function Login() {
   };
 
   return (
-    <div class="shape">
     <div className='loginContainer'>
+      <div class="shape" />
+      <div class="shape2" />
       <Box>
         <img src={Logo} alt="Logo" className="logo" />
         <img src={GoogleLogo} alt='Google Logo' className='GGLogo' />
@@ -43,7 +44,6 @@ export default function Login() {
           <img src={GoogleIcon} alt='Google Icon' className='GGIcon' /> Login with Google
         </button>}
       </Box>
-    </div>
     </div>
   )
 }

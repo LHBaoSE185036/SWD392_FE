@@ -4,19 +4,12 @@
     min-width: 220px !important;
     z-index: 999;
     box-shadow: 10px 0px 20px -6px rgba(0, 0, 0, 0.5);
-    animation: slide-in 2s ease-in-out forwards;
-    animation-iteration-count: 1;
+    animation: slide-in 1s ease-in-out forwards;
 }
 @keyframes slide-in {
     0% {
       transform: translateX(-50%);
     }
-  
-    40% {
-        min-width: 220px !important;
-        transform: translateX(20%);
-    }
-  
     100% {
         transform: translateX(0%);
     }

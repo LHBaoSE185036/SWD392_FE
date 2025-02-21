@@ -50,8 +50,6 @@ const UserManagement = () => {
         <UserTable />
       </div>
       
-
-      
     </div>
   )
 }

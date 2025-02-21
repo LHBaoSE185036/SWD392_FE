@@ -11,6 +11,7 @@ const MainLayout = () => {
 
   return (
     <Layout style={{ minHeight: "100vh" }} className='mainLayout'>
+      <div class="shape" /> <div class="shape2" />
       <Sidebar />
       <Layout>
         <Content className='main-hero'>
