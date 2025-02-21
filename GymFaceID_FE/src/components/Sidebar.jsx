@@ -7,6 +7,7 @@ import { useSwipeable } from 'react-swipeable';
 
 import Logo from '../assets/LightMainLogo.png'
 import './styles/Sidebar.css'
+import LogoutButton from "./Account-Actions/LogoutButton";
 const {Sider} = Layout
 
 const Sidebar = () => {
@@ -48,6 +49,7 @@ const Sidebar = () => {
         </Menu.Item>
       </Menu>
 
+      <LogoutButton/>
       <div 
         className="collapseBtn"
         onClick={() => setCollapsed(!collapsed)}

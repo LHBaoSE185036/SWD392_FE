@@ -1,0 +1,9 @@
+.logout-Btn {
+    position: absolute;
+    bottom: 20px;
+    background-color: transparent;
+    color: var(--primary-text-color);
+    font-weight: 700;
+    border: 2px solid var(--primary-text-color);
+    padding: 20px 40px;
+}

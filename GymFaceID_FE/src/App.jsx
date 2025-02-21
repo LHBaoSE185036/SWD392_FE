@@ -1,17 +1,32 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useState } from 'react'
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { useState, useEffect } from 'react'
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./firebase";
+
 import './App.css'
-import Sidebar from "./components/Sidebar";
-import Navbar from "./components/Navbar";
-import UserManagement from "./pages/Admin/UserManagement/UserManagement";
 import MainLayout from "./components/MainLayout/MainLayout";
+import Login from "./pages/Login-page/Login";
 
 function App() {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
+  
   return (
     <Router>
       <Routes>
-          <Route path="/*" element={<MainLayout />} />
+        <Route path="/" element={user ? <MainLayout /> : <Navigate to="/login" />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </Router>
   )
