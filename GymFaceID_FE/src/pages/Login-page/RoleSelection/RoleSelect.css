@@ -1,0 +1,93 @@
+.role-selection-container {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: black;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+}
+
+.role-selection-container h2 {
+    position: absolute;
+    justify-content: center;
+    top: 2;
+    padding: 5px 10px;
+    border-radius: 8px;
+    z-index: 5;
+    background-color: var(--primary-text-color);
+}
+
+.admin-role-btn, 
+.user-role-btn {
+    opacity: 1;
+    flex: 1;
+    font-size: 24px;
+    font-weight: 600;
+    background-color: #00000080;
+    outline: none;
+    border: 1px solid transparent;
+    transition: border 0.4s ease, opacity 0.3s ease, flex 0.4s ease;
+}
+.admin-role-btn {margin-right: 2px;} 
+.user-role-btn {margin-left: 2px;}
+.admin-role-btn:focus-within, 
+.user-role-btn:focus-within {
+    outline: none; border: none;
+}
+
+.admin-role-btn:hover {
+    border: 1px solid transparent; border-radius: 0 10px 10px 0;
+    border-bottom: 0px solid transparent; border-top: 0px solid transparent; border-left: 0px solid transparent;
+    box-shadow: 52px 0px 40px 2px #ffffff49;
+    z-index: 2;
+    transition: border 0.3s ease;
+}
+.user-role-btn:hover {
+    border: 1px solid transparent; border-radius: 10px 0 0 10px;
+    border-bottom: 0px solid transparent; border-top: 0px solid transparent; border-right: 0px solid transparent;
+    box-shadow: -52px 0px 40px 2px #ffffff49;
+    transition: border 0.3s ease;
+}
+
+.role-selection-container:has(.user-role-btn:hover) .admin-role-btn {
+    opacity: 0.2;
+    flex: 0.6;
+    transition: opacity 0.2s ease, flex 0.3s ease;
+}
+.role-selection-container:has(.admin-role-btn:hover) .user-role-btn {
+    opacity: 0.2;
+    flex: 0.6;
+    transition: opacity 0.2s ease, flex 0.3s ease;
+}
+
+.user-role-img,
+.admin-role-img {
+    position: absolute;
+    top: 10%;
+    height: 80vh;
+    z-index: -1;
+    opacity: 0.4;
+}
+
+.user-role-img {
+    right: 0;
+    width: 48%;
+    transform: translateX(20%);
+    mask-image: radial-gradient( circle, black, black, transparent 60%);
+    transition: all 0.4s ease;
+}
+.role-selection-container:has(.user-role-btn:hover) .user-role-img {opacity: 1; transition: opacity 0.3s ease;}
+.role-selection-container:has(.admin-role-btn:hover) .user-role-img { transform: translateX(40%); transition: all 0.3s ease; }
+.role-selection-container:has(.user-role-btn:focus-within) .user-role-img { transform: translateX(20%) translateY(-10%); transition: all 0.3s ease; }
+
+.admin-role-img {
+    left: 10%;
+    width: 25%;
+    transform: scale(1.1) translateX(10%) translateY(0%);
+    transition: all 0.4s ease;
+}
+.role-selection-container:has(.admin-role-btn:hover) .admin-role-img {opacity: 1; transition: opacity 0.3s ease;}
+.role-selection-container:has(.user-role-btn:hover) .admin-role-img { transform: scale(1.1) translateX(-20%); transition: all 0.3s ease; }
+.role-selection-container:has(.admin-role-btn:focus-within) .admin-role-img { transform: scale(1.1) translateX(10%) translateY(-10%); transition: all 0.3s ease; }

@@ -6,27 +6,40 @@ import { auth } from "./firebase";
 import './App.css'
 import MainLayout from "./components/MainLayout/MainLayout";
 import Login from "./pages/Login-page/Login";
+import RoleSelect from "./pages/Login-page/RoleSelection/RoleSelect";
+import HomePage from "./pages/User/HomePage/HomePage";
+
+import ProtectedRoutes from "./utils/ProtectedRoutes";
 
 function App() {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setLoading(false);
-    });
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+          setUser(currentUser);
+          console.log(currentUser);
+          setLoading(false);
+        });
+    
+        return () => unsubscribe();
+    }, []);
+    
 
-    return () => unsubscribe();
-  }, []);
-
-  if (loading) return <div>Loading...</div>;
+    if (loading) return <div>Loading...</div>;
   
   return (
     <Router>
       <Routes>
-        <Route path="/" element={user ? <MainLayout /> : <Navigate to="/login" />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={ <Login/>} />
+        <Route path="/role-selection" element={ <RoleSelect/> }/>
+        
+        <Route element={<ProtectedRoutes user={user}/> }>
+          <Route path="/" element={ <MainLayout/>}/>
+          <Route path="/HomePage" element={ <HomePage/>}/>
+        </Route>
+
+        
       </Routes>
     </Router>
   )

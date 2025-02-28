@@ -19,7 +19,7 @@ export default function Login() {
     try {
       const result = await signInWithPopup(auth, provider);
       console.log("User Signed In: ", result.user);
-      navigate("/");
+      navigate("/role-selection");
     } catch (error) {
       console.error("Google Login Failed:", error);
       setError("Failed to login. Please try again.");
