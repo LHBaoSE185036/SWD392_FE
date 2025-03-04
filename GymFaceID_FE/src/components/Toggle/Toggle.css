@@ -1,0 +1,30 @@
+.toggle{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 1rem;
+    position: relative;
+    padding: 2px;
+    cursor: pointer;
+
+}
+.toggle>*{
+    width: 1.5rem;
+    height: 1.5rem;
+}
+.t-button{
+    border-radius: 100%;
+    position: absolute;
+}
+
+.dark-off {
+    color: cyan;
+    padding: 0;
+    border-radius: 1rem;
+}
+
+.light-off {
+    color: #FCA61F;
+    flex: 1;
+    border-radius: 1rem;
+}

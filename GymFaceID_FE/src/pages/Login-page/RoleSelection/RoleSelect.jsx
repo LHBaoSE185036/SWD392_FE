@@ -9,7 +9,7 @@ export default function RoleSelect() {
 
   const handleRoleSelect = (role) => {
     localStorage.setItem("role", role);
-    navigate(role === "admin" ? "/" : "/HomePage");
+    navigate(role === "admin" ? "/AdminPage" : "/HomePage");
   };
 
   return (

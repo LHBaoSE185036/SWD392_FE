@@ -16,10 +16,13 @@
     "@mui/material": "^6.4.4",
     "antd": "^5.24.0",
     "firebase": "^11.3.1",
+    "framer-motion": "^12.4.10",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.1.5",
-    "react-swipeable": "^7.0.2"
+    "react-scroll": "^1.9.3",
+    "react-swipeable": "^7.0.2",
+    "swiper": "^11.2.5"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",

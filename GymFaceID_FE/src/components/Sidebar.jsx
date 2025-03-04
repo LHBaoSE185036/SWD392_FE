@@ -35,16 +35,16 @@ const Sidebar = () => {
         <Menu.Item key="/" icon={<FreeBreakfastOutlined style={{ fontSize: "24px" }}/>}>
           Func 1
         </Menu.Item>
-        <Menu.Item key="/2" icon={<DriveFileRenameOutline style={{ fontSize: "24px" }}/>}>
+        <Menu.Item key="/" icon={<DriveFileRenameOutline style={{ fontSize: "24px" }}/>}>
           Func 2
         </Menu.Item>
-        <Menu.Item key="/3" icon={<UserOutlined style={{ fontSize: "24px" }}/>}>
+        <Menu.Item key="/" icon={<UserOutlined style={{ fontSize: "24px" }}/>}>
           Func 3
         </Menu.Item>
-        <Menu.Item key="/4" icon={<CalendarMonthOutlined style={{ fontSize: "24px" }}/>}>
+        <Menu.Item key="/" icon={<CalendarMonthOutlined style={{ fontSize: "24px" }}/>}>
           Func 4
         </Menu.Item>
-        <Menu.Item key="/5" icon={<SmsOutlined style={{ fontSize: "24px" }}/>}>
+        <Menu.Item key="/" icon={<SmsOutlined style={{ fontSize: "24px" }}/>}>
           Func 5
         </Menu.Item>
       </Menu>
