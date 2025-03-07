@@ -70,8 +70,8 @@ const Works = () => {
           </div>
         </motion.div>
         {/* background Circles */}
-        <div className="w-backCircle blueCircle"></div>
-        <div className="w-backCircle yellowCircle"></div>
+        <div className="w-backCircle brownCircle"></div>
+        <div className="w-backCircle grayCircle"></div>
       </div>
     </div>
   );

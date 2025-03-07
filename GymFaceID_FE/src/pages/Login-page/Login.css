@@ -12,7 +12,8 @@
     top: 0;
     z-index: 10;
 }
-.MuiBox-root{
+
+.MuiBox-root {
     padding: 100px 200px;
     width: 20%;
     background-color: #ffffff50;
@@ -24,6 +25,86 @@
     backdrop-filter: blur(8px);
     box-shadow: 1px 1px 40px 2px #ffffff49;
 }
+
+.MuiBox-root.usernamePassLoginBox {
+    padding: 20px 20px;
+    width: 30%; height: 60%;
+    background-color: #ffffff50;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8px);
+    box-shadow: 1px 1px 40px 2px #ffffff49;
+}
+.usernamePassLoginBox form {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.usernamePassLoginBox .input-field {
+    display: flex;
+    width: 90%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+.usernamePassLoginBox .input-field input {
+    background-color: #ccc;
+    color: black;
+    padding-left: 20px;
+    font-weight: 400;
+    width: 100%;
+    height: 40px;
+    outline: none; border: 2px solid #ffffff99;
+    border-radius: 12px;
+}
+.usernamePassLoginBox .input-field input::placeholder { user-select: none; padding-left: 10px; transform: translateX(0%); transition: transform 0.4s ease;}
+.usernamePassLoginBox .input-field input:focus-within::placeholder { transform: translateX(-100%); transition: transform 0.3s ease;}
+
+.usernamePassLoginBox .input-field label { font-size: large; padding: 5px 10px; color: #333; font-weight: 600;}
+
+.switch-toggle{
+    display: flex;
+    width: 60px;
+    height: 180px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10rem;
+    position: absolute;
+    right: 5%;
+    padding: 2px;
+    cursor: pointer;
+
+}
+.switch-toggle>*{
+    width: 1.5rem;
+    height: 1.5rem;
+}
+.switch-button{
+    width: 80%;
+    height: 28%;
+    border-radius: 100%;
+    position: absolute;
+}
+
+.usernamePassLogin {
+    padding: 18px;
+    color: white;
+    border-radius: 1rem;
+}
+
+.googleLogin {
+    padding: 18px;
+    border-radius: 1rem;
+    user-select: none;
+}
+
 .logo {
     width: 50%; min-width: 150px;
     height: 60%; min-height: 140px;
@@ -152,4 +233,21 @@
         left: 60%;
         top: 5%;
     }
+}
+
+.googleLoginBox,
+.usernamePassLoginBox {
+    transform: translateY(0);
+    transition: transform 0.4s ease;
+}
+
+.googleLoginBox.away {
+    position: absolute;
+    transform: translateY(200%);
+    transition: transform 0.4s ease;
+}
+.usernamePassLoginBox.away {
+    position: absolute;
+    transform: translateY(-200%);
+    transition: transform 0.4s ease;
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './UserManagement.css'
 import UserTable from '../../../components/UserTable';
 import { PersonAddAlt1Outlined, SearchOffOutlined, SearchOutlined } from '@mui/icons-material';
@@ -6,6 +6,9 @@ import { PersonAddAlt1Outlined, SearchOffOutlined, SearchOutlined } from '@mui/i
 import PFP from '../../../assets/placeholder.png'
 
 const UserManagement = () => {
+  const storedUser = sessionStorage.getItem("username");
+  const storedGmailUser = sessionStorage.getItem("GG-username");
+  
   return (
     <div className="user-management">
       <div className="search-container">
@@ -14,7 +17,7 @@ const UserManagement = () => {
           <input type="text" placeholder="Search here" className="search-input" />
           <SearchOutlined className='search-icon'/>
         </div>
-        <div className='user-container'>Hello, <span>Admin</span> {/*<img src={PFP} alt="PFP" />*/}</div>
+        <div className='user-container'>Hello, <span>{storedUser ? storedUser : storedGmailUser}</span> {/*<img src={PFP} alt="PFP" />*/}</div>
       </div>
 
       <div className='main-content-title-card'>

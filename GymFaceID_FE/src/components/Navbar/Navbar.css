@@ -28,7 +28,7 @@
 }
 
 .n-list {
-  flex: 10;
+  flex: 0.6;
 }
 .n-list > ul {
   display: flex;

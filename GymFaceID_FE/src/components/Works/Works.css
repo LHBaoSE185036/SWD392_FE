@@ -47,7 +47,7 @@
   border-radius: 100%;
   box-shadow: var(--smboxShadow);
   top: 2rem;
-  background: white;
+  background: gray;
   /* darkMode */
   z-index: 2;
 }
@@ -55,22 +55,32 @@
   position: absolute;
 }
 .w-mainCircle > :nth-child(1) {
+  background-color: #33333369;
+  backdrop-filter: blur(8px);
   top: -3rem;
   left: 6rem;
 }
 .w-mainCircle > :nth-child(2) {
+  background-color: #33333369;
+  backdrop-filter: blur(8px);
   left: -3rem;
   top: 5rem;
 }
 .w-mainCircle > :nth-child(3) {
+  background-color: #ffffff82;
+  backdrop-filter: blur(8px);
   left: 6rem;
   top: 5rem;
 }
 .w-mainCircle > :nth-child(4) {
+  background-color: #cdcdcd69;
+  backdrop-filter: blur(8px);
   left: 15rem;
   top: 5rem;
 }
 .w-mainCircle > :nth-child(5) {
+  background-color: #80808069;
+  backdrop-filter: blur(8px);
   left: 6rem;
   top: 13rem;
 }
@@ -100,13 +110,13 @@
   /* darkMode */
   z-index: 1;
 }
-.blueCircle {
-  background: #1949b8;
+.brownCircle {
+  background: brown;
   left: 18rem;
   top: 0rem;
 }
-.yellowCircle {
-  background: #f5c32c;
+.grayCircle {
+  background: #333;
   left: 18rem;
   top: 8rem;
 }
