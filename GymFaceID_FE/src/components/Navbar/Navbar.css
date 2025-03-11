@@ -1,9 +1,17 @@
+.frontPageApp .n-wrapper {
+  background-color: white;
+}
+.frontPageApp.Dark .n-wrapper {
+  background-color: black;
+}
+
 .n-wrapper {
   padding: 0 40px;
+  width: 94vmax;
   height: 10vh;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 2rem;
+  z-index: 99;
   top: 0;
 }
 .n-left {

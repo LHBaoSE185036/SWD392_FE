@@ -34,7 +34,6 @@ const Services = () => {
         <a href=""/*{Guide}*/ download>
           <button className="frontPageButton s-button">Download Guide</button>
         </a>
-        <div className="blur s-blur1" style={{ background: "#ABF1FF94" }}></div>
       </div>
       {/* right */}
       <div className="cards">
@@ -53,7 +52,7 @@ const Services = () => {
         {/* second card */}
         <motion.div
           initial={{ left: "15rem", top: "-5rem" }}
-          whileInView={{ left: "20rem", top: "-5rem" }}
+          whileInView={{ left: "20rem"}}
           transition={transition}
         >
           <Card
@@ -65,7 +64,7 @@ const Services = () => {
         {/* 3rd */}
         <motion.div
           initial={{ top: "19rem", left: "25rem" }}
-          whileInView={{ top: "19rem", left: "30rem" }}
+          whileInView={{ left: "30rem" }}
           transition={transition}
         >
           <Card
@@ -77,6 +76,11 @@ const Services = () => {
             color="rgba(252, 166, 31, 0.45)"
           />
         </motion.div>
+        <div 
+          className="blur s-blur1"
+          style={{ background: "#ABF1FF94" }}>
+
+        </div>
         <div
           className="blur s-blur2"
           style={{ background: "var(--purple)" }}

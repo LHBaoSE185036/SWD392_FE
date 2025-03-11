@@ -3,7 +3,8 @@
   align-items: center;
   justify-content: center;
   gap: 5rem;
-  height: 30vh;
+  height: 60vh;
+  padding-top: 10rem;
   margin-bottom: 8rem;
   /* darkmode */
   color: var(--black);

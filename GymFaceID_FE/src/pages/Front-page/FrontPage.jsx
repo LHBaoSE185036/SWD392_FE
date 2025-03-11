@@ -1,7 +1,7 @@
 import Navbar from "../../components/Navbar/Navbar";
 import Intro from "../../components/Intro/Intro";
 import Services from "../../components/Services/Services";
-
+import SwipeList from "../../components/SwipeList/SwipeList";
 import Experience from "../../components/Experience/Experience";
 import Works from "../../components/Works/Works";
 import Footer from "../../components/Footer/Footer";
@@ -17,7 +17,7 @@ export default function FrontPage() {
         <div
         className= { darkMode ? "frontPageApp Dark" : "frontPageApp"}
         style={{
-            background: darkMode ? "black" : "lightyellow",
+            background: darkMode ? "black" : "white",
             color: darkMode ? "white" : "",
         }}
         >
@@ -26,7 +26,7 @@ export default function FrontPage() {
             <Services />
             <Experience />
             <Works />
-            {/* <Portfolio /> */}
+            {/* <SwipeList /> */}
             <Footer />
         
         </div>

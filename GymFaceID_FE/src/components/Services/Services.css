@@ -35,6 +35,7 @@
 }
 /* right sided */
 .cards {
+  transform: translateY(20%);
   position: relative;
   display: flex;
   flex: 1;
@@ -46,13 +47,13 @@
 
 /* blur */
 .s-blur2 {
-  left: 14rem;
-  top: 8rem;
+  left: 24rem;
+  top: 10rem;
 }
 
 .s-blur1 {
-  top: 13rem;
-  left: -18rem;
+  top: 1rem;
+  left: 32rem;
 }
 
 @media screen and (max-width: 480px) {
