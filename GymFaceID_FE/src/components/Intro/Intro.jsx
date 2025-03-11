@@ -7,9 +7,7 @@ import dumbbell from "../../assets/dumbbell.png";
 import thumbup from "../../assets/thumbup.png";
 import shield from "../../assets/shield.png";
 import FloatinDiv from "../FloatingDiv/FloatingDiv";
-import Github from "../../assets/github.png";
-import LinkedIn from "../../assets/linkedin.png";
-import Instagram from "../../assets/instagram.png";
+import GymFaceIDLogo from "../../assets/AmazinGym-Face-ID-Logo.png"
 import { themeContext } from "../../Context";
 import { motion } from "framer-motion";
 import { Link } from "react-scroll";
@@ -29,10 +27,11 @@ const Intro = () => {
 
   return (
     <div className="Intro" id="Intro">
-      {/* left name side */}
       <div className="i-left">
+        <div className="i-icons">
+            <img src={GymFaceIDLogo} alt="" />
+          </div>
         <div className="i-name">
-          {/* yahan change hy darkmode ka */}
           <span style={{ color: darkMode ? "white" : "" }}>Greetings! We Are</span>
           <span>Amazin Gym FaceID</span>
           <span>
@@ -43,18 +42,11 @@ const Intro = () => {
         <Link to="contact" smooth={true} spy={true}>
           <button className="frontPageButton i-button" onClick={() => handleDirect()}>Get Started</button>
         </Link>
-        {/* social icons */}
-        <div className="i-icons">
-          <img src={Github} alt="" />
-          <img src={LinkedIn} alt="" />
-          <img src={Instagram} alt="" />
-        </div>
       </div>
-      {/* right image side */}
       <div className="i-right">
-        <img src={Vector1} alt="" />
-        <img src={Vector2} alt="" />
-        <img src={gymMember} alt="" />
+        <img src={Vector1} alt="" style={{opacity: "0.4"}}/>
+        <img src={Vector2} alt="" style={{opacity: "0.8"}}/>
+        <img src={gymMember} alt="" style={{backdropFilter: "blur(8px)"}}/>
         {/* animation */}
         <motion.img
           initial={{ left: "-36%" }}
@@ -75,7 +67,7 @@ const Intro = () => {
 
         {/* animation */}
         <motion.div
-          initial={{ left: "9rem", top: "18rem" }}
+          initial={{ left: "-2rem", top: "18rem" }}
           whileInView={{ left: "0rem" }}
           transition={transition}
           className="floating-div"
