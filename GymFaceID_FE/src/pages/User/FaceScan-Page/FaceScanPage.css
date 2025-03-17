@@ -1,0 +1,64 @@
+.face-scan-container {
+    width: 100vmax;
+    height: 100vh;
+    background-color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-btn {
+    border-color: white;
+    color: #ffff;
+    left: 20px;
+    padding: 10px 30px; 
+}
+
+.webcam-wrapper {
+    position: relative;
+    border: 1px solid aqua;
+    border-radius: 6px;
+    padding: 8px;
+    background-color: transparent;
+    margin-bottom: 40px;
+}
+
+.captured-image {
+    padding: 6px;
+    border-radius: 6px;
+}
+
+.button-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.button-container .send-btn {
+    display: flex;
+    justify-content: left;
+    padding-right: 20px;
+    transition: all 0.5s ease;
+}
+
+.button-container .send-btn .send-icon {
+    position: absolute;
+    translate: 220%;
+    opacity: 0;
+    transition: all 0.1s ease;
+}
+
+.button-container .send-btn:hover {
+    padding-right: 40px;
+    margin-left: -20px;
+    transition: all 0.3s ease;
+}
+
+.button-container .send-btn:hover .send-icon {
+    translate: 250%;
+    opacity: 1;
+    transition: all 0.3s ease;
+}

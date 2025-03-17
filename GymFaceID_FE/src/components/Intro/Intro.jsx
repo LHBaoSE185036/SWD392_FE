@@ -32,7 +32,7 @@ const Intro = () => {
             <img src={GymFaceIDLogo} alt="" />
           </div>
         <div className="i-name">
-          <span style={{ color: darkMode ? "white" : "" }}>Greetings! We Are</span>
+          <span style={{ color: darkMode ? "white" : "#555" }}>Greetings! We Are</span>
           <span>Amazin Gym FaceID</span>
           <span>
             Frontend Developer with high level of experience in web designing

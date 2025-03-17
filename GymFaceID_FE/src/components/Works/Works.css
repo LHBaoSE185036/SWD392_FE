@@ -102,6 +102,27 @@
   transform: scale(0.6);
 }
 
+.w-semiCircle {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform: translate(-35%, -28%);
+  border-radius: 100%;
+  border: 5px solid #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: "none";
+  box-shadow: var(--smboxShadow);
+  background: white;
+  overflow: hidden;
+}
+
+.w-semiCircle > img {
+  transform: scale(0.6);
+  border-radius: 50%;
+}
+
 .w-backCircle {
   position: absolute;
   height: 13rem;
@@ -116,9 +137,34 @@
   top: 0rem;
 }
 .grayCircle {
-  background: #333;
+  background: #555;
   left: 18rem;
   top: 8rem;
+}
+
+.w-linescan {
+  position: absolute;
+  height: 5px;
+  width: 20rem;
+  background: cyan;
+  box-shadow: 0px 2px 15px aqua,
+              0px -5px 15px greenyellow,
+              0px 10px 15px blue;
+  border-radius: 10px;
+  z-index: 1;
+  animation: 20s scan ease infinite;
+}
+
+@keyframes scan {
+  0% {
+    top: -5%;
+  }
+  50% {
+    top: 100%;
+  }
+  100% {
+    top: -10%;
+  }
 }
 
 @media screen and (max-width: 480px) {

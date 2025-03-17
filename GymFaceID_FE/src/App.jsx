@@ -14,6 +14,7 @@ import HomePage from "./pages/User/HomePage/HomePage";
 
 import ProtectedRoutes from "./utils/ProtectedRoutes";
 import FrontPage from "./pages/Front-page/FrontPage";
+import FaceScanPage from "./pages/User/FaceScan-Page/FaceScanPage";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -50,8 +51,10 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<ThemeProvider><FrontPage/></ThemeProvider>} />
-        <Route path="/login" element={ <Login/>} />
-        <Route path="/role-selection" element={ <RoleSelect/> }/>
+        <Route path="/login" element={ <Login/> } />
+        <Route path="/role-selection" element={ <RoleSelect/> } />
+
+        <Route path="/face-scanner" element={ <FaceScanPage/> } />
         
         <Route element={<ProtectedRoutes user={user}/> }>
           <Route path="/AdminPage" element={ <MainLayout/>}/>

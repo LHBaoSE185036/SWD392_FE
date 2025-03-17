@@ -5,13 +5,20 @@ import Google from "../../assets/GG-logo.png";
 import User from "../../assets/User-Image.png";
 import X_Twitter from "../../assets/X-logo.png";
 import Facebook from "../../assets/Facebook.png";
+import FaceScan from "../../assets/151288849-facial-recognition-technology-man-face-identity-verification-vector-illustration-design.jpg"
 import { themeContext } from "../../Context";
 import { motion } from "framer-motion";
 import {Link} from 'react-scroll'
+import { useNavigate } from "react-router-dom";
 const Works = () => {
   // context
   const theme = useContext(themeContext);
   const darkMode = theme.state.darkMode;
+
+  const navigate = useNavigate();
+  const handleFaceScanDirect = () => {
+    navigate("/face-scanner");
+  };
 
   // transition
   return (
@@ -20,10 +27,10 @@ const Works = () => {
       <div className="w-left">
         <div className="awesome">
           {/* dark Mode */}
-          <span style={{ color: darkMode ? "white" : "" }}>
-            Works for All these
+          <span style={{ color: darkMode ? "white" : "#555" }}>
+            Access The Gym
           </span>
-          <span>Accounts Sign-in</span>
+          <span>Check-in Here</span>
           <spane>
             Lorem ispum is simpley dummy text of printing of printing Lorem
             <br />
@@ -35,7 +42,7 @@ const Works = () => {
             ispum is simpley dummy text of printing
           </spane>
           <Link to="contact" smooth={true} spy={true}>
-            <button className="frontPageButton w-button">Register</button>
+            <button className="frontPageButton w-button" onClick={() =>handleFaceScanDirect()}>Check In</button>
           </Link>
           <div
             className="blur s-blur1"
@@ -53,7 +60,7 @@ const Works = () => {
           transition={{ duration: 3.5, type: "spring" }}
           className="w-mainCircle"
         >
-          <div className="w-secCircle">
+          {/* <div className="w-secCircle">
             <img src={Microsoft} alt="" />
           </div>
           <div className="w-secCircle">
@@ -67,11 +74,15 @@ const Works = () => {
           </div>
           <div className="w-secCircle">
             <img src={Facebook} alt="" />
-          </div>
+          </div> */}
+          <div /><div />
+          <div className="w-semiCircle"><img src={FaceScan} alt="" /><div className="w-linescan"></div></div>
+          <div /><div />
         </motion.div>
         {/* background Circles */}
         <div className="w-backCircle brownCircle"></div>
         <div className="w-backCircle grayCircle"></div>
+        
       </div>
     </div>
   );

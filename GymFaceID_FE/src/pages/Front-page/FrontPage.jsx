@@ -17,7 +17,7 @@ export default function FrontPage() {
         <div
         className= { darkMode ? "frontPageApp Dark" : "frontPageApp"}
         style={{
-            background: darkMode ? "black" : "white",
+            background: darkMode ? "#333" : "lightgray",
             color: darkMode ? "white" : "",
         }}
         >
