@@ -5,8 +5,6 @@ import "./FaceScanPage.css";
 import { FileUpload } from "@mui/icons-material";
 import { useRekognition } from "../../../features/Rekognition/useRekognition";
 
-import axios from "axios";
-
 export default function FaceScanPage() {
   const navigate = useNavigate();
   const webcamRef = useRef(null);

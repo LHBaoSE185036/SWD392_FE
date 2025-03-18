@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://157.230.40.203:8080//gym-face-id-access/api/v1/rekognition/test";
+const API_URL = "http://157.230.40.203:8080/gym-face-id-access/api/v1/rekognition/test";
 
 export const useRekognition = async (base64Image) => {
   const formData = new FormData();
