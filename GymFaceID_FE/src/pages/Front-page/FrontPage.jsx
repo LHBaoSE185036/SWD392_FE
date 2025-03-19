@@ -3,6 +3,7 @@ import Intro from "../../components/Intro/Intro";
 import Services from "../../components/Services/Services";
 import SwipeList from "../../components/SwipeList/SwipeList";
 import Experience from "../../components/Experience/Experience";
+import Membership from "../../components/Membership/Membership"
 import Works from "../../components/Works/Works";
 import Footer from "../../components/Footer/Footer";
 import "./FrontPage.css"
@@ -25,7 +26,9 @@ export default function FrontPage() {
             <Intro />
             <Services />
             <Experience />
+            <Membership />
             <Works />
+            
             {/* <SwipeList /> */}
             <Footer />
         
