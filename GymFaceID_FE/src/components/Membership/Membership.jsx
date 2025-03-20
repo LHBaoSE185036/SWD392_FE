@@ -9,9 +9,9 @@ const Membership = () => {
     const [selectedPlan, setSelectedPlan] = useState(null);
 
     const plans = [
-        { name: "Basic Plan", price: 50, description: "Basic access to gym facilities.", trainingDay: 30, duration: 1, slotTimeType: "Khung giờ A", slotTimeResponses: [{ slotTimeType: "Sáng", startTime: "05:30:00", endTime: "08:00:00" }, { slotTimeType: "Tối", startTime: "18:00:00", endTime: "21:00:00" }] },
-        { name: "Premium Plan", price: 100, description: "Premium access with personal trainer.", trainingDay: 60, duration: 2, slotTimeType: "Khung giờ A", slotTimeResponses: [] },
-        { name: "Extended Basic", price: 40, description: "Extended duration for basic plan.", trainingDay: 90, duration: 3, slotTimeType: "Khung giờ B", slotTimeResponses: [] },
+        { name: "Basic Plan", price: 50000, description: "Basic access to gym facilities.", trainingDay: 30, duration: 1, slotTimeType: "Khung giờ A", slotTimeResponses: [{ slotTimeType: "Sáng", startTime: "05:30:00", endTime: "08:00:00" }, { slotTimeType: "Tối", startTime: "18:00:00", endTime: "21:00:00" }] },
+        { name: "Premium Plan", price: 100000, description: "Premium access with personal trainer.", trainingDay: 60, duration: 2, slotTimeType: "Khung giờ A", slotTimeResponses: [] },
+        { name: "Extended Basic", price: 40000, description: "Extended duration for basic plan.", trainingDay: 90, duration: 3, slotTimeType: "Khung giờ B", slotTimeResponses: [] },
         { name: "Gói sinh viên khung giờ A", price: 150000, description: "Gói sinh viên với giá ưu đãi", trainingDay: 24, duration: 1, slotTimeType: "Khung giờ A", slotTimeResponses: [{ slotTimeType: "Sáng", startTime: "05:30:00", endTime: "08:00:00" }, { slotTimeType: "Tối", startTime: "18:00:00", endTime: "21:00:00" }] },
         { name: "Gói khách khung giờ A", price: 200000, description: "Gói cho khách hàng thường tập", trainingDay: 24, duration: 1, slotTimeType: "Khung giờ A", slotTimeResponses: [{ slotTimeType: "Sáng", startTime: "05:30:00", endTime: "08:00:00" }, { slotTimeType: "Tối", startTime: "18:00:00", endTime: "21:00:00" }] }
     ];
@@ -34,15 +34,16 @@ const Membership = () => {
                 {plans.map((plan, index) => (
                     <div
                         key={index}
-                        className="membershipBox"
+                        className={darkMode ? "membershipBox boxShadow-Light" : "membershipBox boxShadow-Dark"}
+
                         style={{
                             background: darkMode
                                 ? "linear-gradient(0deg, #1a1a1a,#575757)"
                                 : "linear-gradient(0deg, #ffffff, #d1d1d1)"
                         }}                        onClick={() => handleBoxClick(plan)}
                     >
-                        <h3 className={darkMode ? ".lightGradient" : ".darkGradient"}>{plan.name}</h3> {/*Khong chay duoc style?*/}
-                        <p className={darkMode ? ".lightGradient" : ".darkGradient"}>Price: ${plan.price}</p> {/*Cai nay cung khong*/}
+                        <h3 className={`planName ${darkMode ? "lightText" : "darkText"}`}>{plan.name}</h3> 
+                        <p className={`planPrice ${darkMode ? "lightText" : "darkText"}`}>{plan.price} VND</p>
                     </div>
                 ))}
             </div>
