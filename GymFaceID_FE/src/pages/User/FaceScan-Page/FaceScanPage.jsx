@@ -37,7 +37,7 @@ export default function FaceScanPage() {
     setLoading(true);
     try {
       const response = await useRekognition(capturedImage);
-      console.log("API Response:", response);
+      console.log("Image Uploaded:", response);
     } catch (error) {
       console.error("Upload failed:", error);
     } finally {

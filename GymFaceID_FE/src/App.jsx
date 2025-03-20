@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { useState, useEffect } from 'react'
-import { AuthProvider } from "./features/Auth/useAuth";
+import { AuthProvider, useAuth } from "./features/Auth/useAuth";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
 
@@ -14,56 +14,53 @@ import HomePage from "./pages/User/HomePage/HomePage";
 
 import ProtectedRoutes from "./utils/ProtectedRoutes";
 import FrontPage from "./pages/Front-page/FrontPage";
-import FaceScanPage from "./pages/User/FaceScan-Page/FaceScanPage";
 
 function App() {
+  return (
+    <AuthProvider>
+      <Router>
+        <AppRoutes />
+      </Router>
+    </AuthProvider>
+  )
+}
+
+
+function AppRoutes() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const { userAuth } = useAuth();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if(currentUser) {
         setUser(currentUser);
-        console.log(currentUser);
         setLoading(false);
-      } else {
-        // If not Google login, check API login session
-        const storedUser = sessionStorage.getItem("username"); 
-        const storedRole = sessionStorage.getItem("selectedRole");
-
-        if (storedUser && storedRole) {
-          setUser({ username: storedUser, role: storedRole });
-          console.log("User: ", user);
-        } else {
-          setUser(null);
-        }
       }
-      setLoading(false);
+      else {
+        setUser(null);
+        setLoading(false);
+      }
     });
 
     return () => unsubscribe();
   }, []);
-    
-  if (loading) return <div>Loading...</div>;
   
-  return (
-    <AuthProvider>
-    <Router>
-      <Routes>
-        <Route path="/" element={<ThemeProvider><FrontPage/></ThemeProvider>} />
-        <Route path="/login" element={ <Login/> } />
-        <Route path="/role-selection" element={ <RoleSelect/> } />
+  if (loading) return <div className="loader" />;
 
-        <Route path="/face-scanner" element={ <FaceScanPage/> } />
-        
-        <Route element={<ProtectedRoutes user={user}/> }>
-          <Route path="/AdminPage" element={ <MainLayout/>}/>
-          <Route path="/HomePage" element={ <HomePage/>}/>
-        </Route>
-      </Routes>
-    </Router>
-    </AuthProvider>
-  )
+  return (
+    <Routes>
+      <Route path="/" element={<ThemeProvider><FrontPage/></ThemeProvider>} />
+      <Route path="/login" element={ <Login/> } />
+          
+      <Route element={ user ? <ProtectedRoutes user={user}/> : <ProtectedRoutes user={userAuth} /> }>
+        <Route path="/role-selection" element={ <RoleSelect/> } />
+        <Route path="/AdminPage" element={ <MainLayout/>}/>
+        <Route path="/HomePage" element={ <HomePage/>}/>
+      </Route>
+    </Routes>
+  );
 }
 
 export default App

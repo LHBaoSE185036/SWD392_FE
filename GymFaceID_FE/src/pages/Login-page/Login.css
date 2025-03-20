@@ -160,6 +160,7 @@
     height: 70%;
     top: 5%;
     filter: blur(10px);
+    pointer-events: none;
     animation: morph 8s ease-in-out infinite, bounce 60s ease-in-out infinite;
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
     transition: all 1s ease-in-out;
@@ -172,6 +173,7 @@
     left: 0;
     bottom: 0;
     filter: blur(8px);
+    pointer-events: none;
     animation: morph2 16s ease-in-out infinite;
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
     transition: all 1s ease-in-out;
