@@ -15,11 +15,6 @@ const Works = () => {
   const theme = useContext(themeContext);
   const darkMode = theme.state.darkMode;
 
-  const navigate = useNavigate();
-  const handleFaceScanDirect = () => {
-    navigate("/face-scanner");
-  };
-
   // transition
   return (
     <div className="works" id="works">
@@ -31,7 +26,7 @@ const Works = () => {
             Access The Gym
           </span>
           <span>Check-in Here</span>
-          <spane>
+          <span>
             Lorem ispum is simpley dummy text of printing of printing Lorem
             <br />
             ispum is simpley dummy text of printingLorem ispum is simpley dummy
@@ -40,9 +35,9 @@ const Works = () => {
             y dummy text of printingLorem
             <br />
             ispum is simpley dummy text of printing
-          </spane>
-          <Link to="contact" smooth={true} spy={true}>
-            <button className="frontPageButton w-button" onClick={() =>handleFaceScanDirect()}>Check In</button>
+          </span>
+          <Link to="Intro" smooth={true} spy={true}>
+            <button className="frontPageButton w-button" >Check In</button>
           </Link>
           <div
             className="blur s-blur1"

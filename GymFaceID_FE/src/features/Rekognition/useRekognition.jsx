@@ -4,6 +4,8 @@ const API_URL = "http://157.230.40.203:8080/gym-face-id-access/api/v1/rekognitio
 
 export const useRekognition = async (base64Image) => {
   const formData = new FormData();
+
+  const TOKEN = sessionStorage.getItem("accessToken");
     
   // Convert base64 image to a File object
   const blob = await fetch(base64Image).then((res) => res.blob());
@@ -13,9 +15,10 @@ export const useRekognition = async (base64Image) => {
 
   try {
       const response = await axios.post(API_URL, formData, {
-          headers: {
-              "Content-Type": "multipart/form-data",
-          },
+        headers: {
+            Authorization: `Bearer ${TOKEN}`,
+            "Content-Type": "multipart/form-data",
+        },
       });
       return response.data;
   } catch (error) {

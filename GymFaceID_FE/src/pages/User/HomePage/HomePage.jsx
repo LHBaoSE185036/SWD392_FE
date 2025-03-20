@@ -1,8 +1,8 @@
 import React from 'react'
-import LogoutButton from '../../../components/Account-Actions/LogoutButton'
 import { Layout } from 'antd'
 import Sidebar from '../../../components/Sidebar'
 import { Content } from 'antd/es/layout/layout'
+import FaceScanPage from '../FaceScan-Page/FaceScanPage'
 
 export default function HomePage() {
   return (
@@ -12,7 +12,7 @@ export default function HomePage() {
       <Sidebar />
       <Layout>
         <Content className='main-hero'>
-          
+          <FaceScanPage />
         </Content>
       </Layout>
     </Layout>

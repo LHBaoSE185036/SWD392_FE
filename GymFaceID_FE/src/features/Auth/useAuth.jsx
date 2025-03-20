@@ -8,26 +8,41 @@ export const useAuth = () => {
 };
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [userAuth, setUserAuth] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const savedUser = sessionStorage.getItem("user");
-    if (savedUser) {
-      setUser(JSON.parse(savedUser));
+    const savedUser = sessionStorage.getItem("username");
+    const savedRole = sessionStorage.getItem("selectedRole");
+
+    if (savedUser && savedRole) {
+      setUserAuth({ username: savedUser, role: savedRole });
     }
     setLoading(false);
   }, []);
 
+  useEffect(() => {
+    const handleStorageChange = () => {
+      const updatedUser = sessionStorage.getItem("username");
+      const updatedRole = sessionStorage.getItem("selectedRole");
+
+      if (updatedUser && updatedRole) {
+        setUserAuth({ username: updatedUser, role: updatedRole });
+      } else {
+        setUserAuth(null);
+      }
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+    return () => window.removeEventListener("storage", handleStorageChange);
+  }, []);
+
   const login = async (username, password) => {
-    const connectionStatus = "connectionDown";
     try {
       const response = await axios.post(
         "http://157.230.40.203:8080/gym-face-id-access/api/v1/auth/login",
         { username, password }
       );
-
-      // console.log("Login Response:", response);
 
       if (response.status === 200 && response.data.success) {
         const token = response.data.data; // JWT Token
@@ -38,28 +53,27 @@ export const AuthProvider = ({ children }) => {
         sessionStorage.setItem("username", sub);
         sessionStorage.setItem("selectedRole", role);
 
-        setUser({ username: sub, role });
+        window.dispatchEvent(new Event("storage"));
 
         return role; // Return the role
       }
     } catch (error) {
-      if (error.code === "ERR_NETWORK") return connectionStatus;
       console.error("Login error:", error);
       return null;
     }
   };
 
   const logout = () => {
-    setUser(null);
     sessionStorage.clear();
+    window.dispatchEvent(new Event("storage"));
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="loader" />;
   }
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ userAuth, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

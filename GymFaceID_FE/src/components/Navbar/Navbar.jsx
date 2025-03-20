@@ -55,7 +55,7 @@ const navbar = () => {
             </li>
             <li>
               <Link to="works" spy={true} smooth={true}>
-                Check-In
+                CheckIn
               </Link>
             </li>
           </ul>

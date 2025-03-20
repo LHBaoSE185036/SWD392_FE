@@ -19,7 +19,7 @@ export default function Login() {
   const [error, setError] = useState(null);
   const [switched, setSwitched] = useState(false);
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { userAuth, login } = useAuth();
 
   const handleClick = () => {
     setSwitched(!switched);
@@ -47,23 +47,19 @@ export default function Login() {
     e.preventDefault();
     try {
       const role = await login(username, password);
-      console.log(role);
-      if (role === "ADMIN") {
-        console.log("Admin");
-        navigate("/AdminPage");
-      } else {
-        console.log("User");
-        navigate("/HomePage");
+  
+      if (role) {
+        console.log(`Logged in as ${role}`);
+        
+        setTimeout(() => {
+          navigate(role === "ADMIN" ? "/AdminPage" : "/HomePage");
+        }, 100);
       }
     } catch (error) {
       console.error("Login Failed:", error);
-      if (error.response) {
-        console.error("Server Response:", error.response);
-      }
       setError("Failed to login. Please try again.");
     }
   };
-  
 
   return (
     <div className='loginContainer'>

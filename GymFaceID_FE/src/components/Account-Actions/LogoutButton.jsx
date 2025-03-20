@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { auth } from "../../firebase";
 import { useAuth } from "../../features/Auth/useAuth"
 import { signOut } from "firebase/auth";
@@ -16,13 +16,14 @@ export default function LogoutButton() {
   const handleLogout = async () => {
     try {
       if (storedUser){
+        console.log("Stored user: ", storedUser);
         await logout();
+        localStorage.clear();
         navigate("/");
-        sessionStorage.clear();
       }
+      await logout();
       await signOut(auth);
       navigate("/");
-      sessionStorage.clear();
     } catch (error) {
       console.error("Logout Failed:", error);
     }

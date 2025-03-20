@@ -109,3 +109,9 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+body:has(.loader) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
