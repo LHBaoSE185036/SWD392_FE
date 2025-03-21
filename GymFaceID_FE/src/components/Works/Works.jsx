@@ -15,6 +15,11 @@ const Works = () => {
   const theme = useContext(themeContext);
   const darkMode = theme.state.darkMode;
 
+  const navigate = useNavigate();
+  const handleHomePageDirect = () => {
+    navigate("/HomePage");
+  };
+
   // transition
   return (
     <div className="works" id="works">
@@ -36,9 +41,8 @@ const Works = () => {
             <br />
             ispum is simpley dummy text of printing
           </span>
-          <Link to="Intro" smooth={true} spy={true}>
-            <button className="frontPageButton w-button" >Check In</button>
-          </Link>
+          <button className="frontPageButton w-button" onClick={() => handleHomePageDirect()} >Check In</button>
+          
           <div
             className="blur s-blur1"
             style={{ background: "#ABF1FF94" }}
