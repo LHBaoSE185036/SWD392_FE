@@ -52,7 +52,7 @@ export default function Login() {
         console.log(`Logged in as ${role}`);
         
         setTimeout(() => {
-          navigate(role === "ADMIN" ? "/AdminPage" : "/HomePage");
+          navigate(role === "ADMIN" ? "/AdminPage/UserManagement" : "/HomePage");
         }, 100);
       }
     } catch (error) {
