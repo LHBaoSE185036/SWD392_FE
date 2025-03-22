@@ -12,7 +12,6 @@ const UserTable = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    // Modal states
     const [isViewModalOpen, setIsViewModalOpen] = useState(false);
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -23,7 +22,6 @@ const UserTable = () => {
         email: "",
     });
 
-    // Fetch users on component mount
     useEffect(() => {
         fetchUsers();
     }, []);
@@ -54,7 +52,6 @@ const UserTable = () => {
         }
     };
 
-    // View User Modal
     const showViewModal = (user) => {
         setSelectedUser(user);
         setIsViewModalOpen(true);
@@ -65,7 +62,6 @@ const UserTable = () => {
         setSelectedUser(null);
     };
 
-    // Edit User Modal
     const showEditModal = (user) => {
         setSelectedUser(user);
         setFormData({
@@ -107,14 +103,13 @@ const UserTable = () => {
             alert("User updated successfully!");
             setIsEditModalOpen(false);
             setSelectedUser(null);
-            fetchUsers(); // Refresh the user list
+            fetchUsers();
         } catch (error) {
             console.error("Error updating user:", error.message);
             alert(`Failed to update user: ${error.message}`);
         }
     };
 
-    // Delete User Modal
     const showDeleteModal = (user) => {
         setSelectedUser(user);
         setIsDeleteModalOpen(true);
@@ -142,7 +137,7 @@ const UserTable = () => {
             alert("User deleted successfully!");
             setIsDeleteModalOpen(false);
             setSelectedUser(null);
-            fetchUsers(); // Refresh the user list
+            fetchUsers();
         } catch (error) {
             console.error("Error deleting user:", error.message);
             alert(`Failed to delete user: ${error.message}`);

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Modal, Button, Input } from 'antd';
+import { Modal, Button, Input, Form } from 'antd';
 import { SearchOutlined } from '@mui/icons-material';
 import UserTable from '../../../components/Tables/UserTable';
 import './UserManagement.css';
 
 const API_URL = "/api/customer/customer";
-const TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraGFuZ2RuIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzQyNTcwMjg4LCJleHAiOjE3NDI2NTY2ODh9.xekGSUihIEfEjWAyjkMYiKX-bFjIc2A5-ZF3Dje-qzE";
+const TOKEN = sessionStorage.getItem("accessToken");
 
 const UserManagement = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -49,10 +49,6 @@ const UserManagement = () => {
             alert("User created successfully!");
             setIsModalOpen(false);
             setFormData({ fullName: "", phoneNumber: "", email: "" });
-
-            // Trigger a refresh of the UserTable
-            // This assumes your UserTable has a way to refresh data
-            // You might need to implement a custom event or callback function
         } catch (error) {
             console.error("Error creating user:",
                 error.response?.data || error.message);
@@ -92,36 +88,68 @@ const UserManagement = () => {
                 title="Add New User"
                 open={isModalOpen}
                 onCancel={handleCancel}
-                footer={[
-                    <Button key="cancel" onClick={handleCancel}>
-                        Cancel
-                    </Button>,
-                    <Button key="submit" type="primary" onClick={handleAddUser}>
-                        Submit
-                    </Button>,
-                ]}
+                footer={null}
             >
-                <Input
-                    name="fullName"
-                    placeholder="Full Name"
-                    value={formData.fullName}
-                    onChange={handleChange}
-                    style={{ marginBottom: "10px" }}
-                />
-                <Input
-                    name="phoneNumber"
-                    placeholder="Phone Number"
-                    value={formData.phoneNumber}
-                    onChange={handleChange}
-                    style={{ marginBottom: "10px" }}
-                />
-                <Input
-                    name="email"
-                    placeholder="Email"
-                    value={formData.email}
-                    onChange={handleChange}
-                />
+                <Form
+                    layout="vertical"
+                    onFinish={handleAddUser}
+                    initialValues={formData}
+                >
+                    <Form.Item
+                        label="Full Name"
+                        name="fullName"
+                        rules={[
+                            { required: true, message: "Full Name is required" }
+                        ]}
+                    >
+                        <Input
+                            placeholder="Enter Full Name"
+                            value={formData.fullName}
+                            onChange={handleChange}
+                        />
+                    </Form.Item>
+
+                    <Form.Item
+                        label="Phone Number"
+                        name="phoneNumber"
+                        rules={[
+                            { required: true, message: "Phone Number is required" },
+                            { pattern: /^[0-9]+$/, message: "Phone number must be numeric" }
+                        ]}
+                    >
+                        <Input
+                            placeholder="Enter Phone Number"
+                            value={formData.phoneNumber}
+                            onChange={handleChange}
+                        />
+                    </Form.Item>
+
+                    <Form.Item
+                        label="Email"
+                        name="email"
+                        rules={[
+                            { required: true, message: "Email is required" },
+                            { type: "email", message: "Enter a valid email" }
+                        ]}
+                    >
+                        <Input
+                            placeholder="Enter Email"
+                            value={formData.email}
+                            onChange={handleChange}
+                        />
+                    </Form.Item>
+
+                    <Form.Item>
+                        <Button type="primary" htmlType="submit">
+                            Submit
+                        </Button>
+                        <Button onClick={handleCancel} style={{ marginLeft: "10px" }}>
+                            Cancel
+                        </Button>
+                    </Form.Item>
+                </Form>
             </Modal>
+
 
             <div className='table-container'>
                 <UserTable />

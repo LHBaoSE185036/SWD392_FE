@@ -1,38 +1,53 @@
-/* Table Styles */
 .membership-table {
     width: 100%;
     border-collapse: collapse;
-    background: white;
-    border-radius: 10px;
-    overflow: hidden;
+    margin-top: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    background-color: white;
 }
 
     .membership-table th,
     .membership-table td {
-        padding: 12px;
+        padding: 12px 15px;
         text-align: left;
-        border-bottom: 1px solid #ddd;
+        border-bottom: 1px solid #e0e0e0;
     }
 
     .membership-table th {
-        background: #ddd;
+        background-color: #f5f5f5;
+        font-weight: bold;
+        color: #333;
     }
 
-/* Loader and Error */
-.loader, .error {
-    text-align: center;
-    padding: 20px;
-    width: 100%;
-    background: white;
-    border-radius: 10px;
-    margin-top: 20px;
+    .membership-table tr:hover {
+        background-color: #f9f9f9;
+    }
+
+.view-btn,
+.delete-btn {
+    background: none;
+    border: none;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: color 0.2s;
 }
 
-.error {
-    color: #d32f2f;
+.view-btn {
+    color: #2196f3;
 }
 
-/* Time Slots */
+    .view-btn:hover {
+        color: #0d8bf2;
+    }
+
+.delete-btn {
+    color: #f44336;
+}
+
+    .delete-btn:hover {
+        color: #e53935;
+    }
+
 .time-slots {
     display: flex;
     flex-direction: column;
@@ -40,36 +55,192 @@
 }
 
 .time-slot {
-    background-color: #f5f5f5;
-    padding: 3px 6px;
+    background-color: #f1f8e9;
+    padding: 3px 8px;
     border-radius: 4px;
-    font-size: 0.9em;
+    font-size: 0.85rem;
 }
 
-/* Action Buttons */
-.view-btn {
-    background: transparent;
-    color: #007bff;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
+.loader {
+    text-align: center;
+    padding: 30px;
+    color: #666;
 }
 
-.delete-btn {
-    background: transparent;
-    color: #d32f2f;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
+.error {
+    color: #f44336;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ffcdd2;
+    border-radius: 4px;
+    background-color: #ffebee;
+    margin-top: 20px;
 }
 
-.edit-btn {
-    background: transparent;
-    color: darkgray;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
+/* New Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
 }
+
+.modal-content {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 600px;
+    overflow: hidden;
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+    .modal-header h2 {
+        margin: 0;
+        font-size: 1.5rem;
+        color: #333;
+    }
+
+.close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #777;
+    transition: color 0.2s;
+}
+
+    .close-btn:hover {
+        color: #333;
+    }
+
+.modal-body {
+    padding: 20px;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.modal-footer {
+    padding: 15px 20px;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* View Modal Specific Styles */
+.view-modal .detail-row {
+    margin-bottom: 15px;
+    display: flex;
+}
+
+.view-modal .detail-label {
+    font-weight: bold;
+    width: 120px;
+    color: #555;
+}
+
+.view-modal .detail-value {
+    flex: 1;
+}
+
+.view-modal .status-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background-color: #4caf50;
+    color: white;
+    font-size: 0.85rem;
+}
+
+.time-slots-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+    .time-slots-list li {
+        padding: 5px 0;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+        .time-slots-list li:last-child {
+            border-bottom: none;
+        }
+
+/* Delete Modal Specific Styles */
+.delete-modal .modal-body {
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.delete-modal p {
+    margin-bottom: 10px;
+}
+
+.delete-modal .confirm-delete-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+    .delete-modal .confirm-delete-btn:hover {
+        background-color: #d32f2f;
+    }
+
+.delete-modal .cancel-btn {
+    background-color: #e0e0e0;
+    color: #333;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+    .delete-modal .cancel-btn:hover {
+        background-color: #c0c0c0;
+    }
+
+.close-modal-btn {
+    background-color: #2196f3;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+    .close-modal-btn:hover {
+        background-color: #1976d2;
+    }
