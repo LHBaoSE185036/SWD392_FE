@@ -42,7 +42,7 @@ const UserTable = () => {
 
             const responseData = await response.json();
 
-            const activeUsers = responseData.data.filter(user => user.status !== "inactive");
+            const activeUsers = responseData.data.filter(user => user.status == "active");
 
             setUsers(activeUsers);
         } catch (err) {

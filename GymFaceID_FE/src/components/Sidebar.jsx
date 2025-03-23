@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Layout, Menu } from "antd";
 import { UserOutlined, DashboardOutlined, SettingOutlined, ArrowLeftOutlined, ArrowRightOutlined } from "@ant-design/icons";
-import { CalendarMonthOutlined, DriveFileRenameOutline, FreeBreakfastOutlined, SmsOutlined } from '@mui/icons-material';
+import PersonIcon from '@mui/icons-material/Person';
+import CardMembershipIcon from '@mui/icons-material/CardMembership';
+import SupervisedUserCircleIcon from '@mui/icons-material/SupervisedUserCircle';
 import { useNavigate } from "react-router-dom";
 import { useSwipeable } from 'react-swipeable';
 
@@ -32,11 +34,14 @@ const Sidebar = () => {
             </div>
 
             <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]} onClick={(e) => navigate(e.key)}>
-                <Menu.Item key="/AdminPage/UserManagement" icon={<FreeBreakfastOutlined style={{ fontSize: "24px" }} />}>
+                <Menu.Item key="/AdminPage/UserManagement" icon={<PersonIcon style={{ fontSize: "24px" }} />}>
                     User Management
                 </Menu.Item>
-                <Menu.Item key="/AdminPage/Membershipmanagement" icon={<FreeBreakfastOutlined style={{ fontSize: "24px" }} />}>
+                <Menu.Item key="/AdminPage/MembershipManagement" icon={<CardMembershipIcon style={{ fontSize: "24px" }} />}>
                     Membership Management
+                </Menu.Item>
+                <Menu.Item key="/AdminPage/AccountManagement" icon={<SupervisedUserCircleIcon style={{ fontSize: "24px" }} />}>
+                    Account Management
                 </Menu.Item>
                 {/*<Menu.Item key="/" icon={<DriveFileRenameOutline style={{ fontSize: "24px" }}/>}>*/}
                 {/*  Func 2*/}

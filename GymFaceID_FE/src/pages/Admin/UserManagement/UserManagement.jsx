@@ -32,27 +32,41 @@ const UserManagement = () => {
     const handleChange = (e) => {
         setFormData({
             ...formData,
-            [e.target.name]: e.target.value,
+            [e.target.id]: e.target.value,
         });
+        console.log(e.target.id);
+        console.log(e.target.value);
     };
 
     const handleAddUser = async () => {
         try {
-            const response = await axios.post(API_URL, formData, {
+            // Make sure the form data is correctly named
+            const dataToSubmit = {
+                fullName: formData.fullName,
+                phoneNumber: formData.phoneNumber,
+                email: formData.email
+            };
+
+            const response = await axios.post(API_URL, dataToSubmit, {
                 headers: {
                     Authorization: `Bearer ${TOKEN}`,
                     "Content-Type": "application/json",
                 },
             });
 
-            console.log("User Created:", response.data);
-            alert("User created successfully!");
-            setIsModalOpen(false);
-            setFormData({ fullName: "", phoneNumber: "", email: "" });
+            console.log("User creation response:", response);
+
+            if (response.status >= 200 && response.status < 300) {
+                alert("User created successfully!");
+                setIsModalOpen(false);
+                setFormData({ fullName: "", phoneNumber: "", email: "" });
+
+            } else {
+                alert("Unexpected response from server");
+            }
         } catch (error) {
-            console.error("Error creating user:",
-                error.response?.data || error.message);
-            alert(`Failed to create user: ${error.response?.data || error.message}`);
+            console.error("Error creating user:", error);
+            alert(`Failed to create user: ${error.response?.data?.message || error.message}`);
         }
     };
 

@@ -93,18 +93,17 @@ const MembershipManagement = () => {
     const formatTimeString = (timeString) => {
         if (!timeString) return "";
 
-        // If already in HH:MM:SS format
-        if (/^\d{1,2}:\d{2}:\d{2}$/.test(timeString)) {
-            return timeString;
-        }
-
-        // If in HH:MM format, add seconds
-        if (/^\d{1,2}:\d{2}$/.test(timeString)) {
-            return `${timeString}:00`;
+        const match = timeString.match(/^(\d{1,2}):(\d{2})(?::(\d{2}))?$/);
+        if (match) {
+            let [_, hours, minutes, seconds] = match;
+            hours = hours.padStart(2, "0");
+            seconds = seconds || "00";
+            return `${hours}:${minutes}:${seconds}`;
         }
 
         return timeString;
     };
+
 
     const validateForm = () => {
         let errors = {};
@@ -188,7 +187,7 @@ const MembershipManagement = () => {
                 status: "active" // Adding status field as active by default
             };
 
-            console.log("Request data:", requestData);
+            console.log(API_URL);
 
             const response = await axios.post(API_URL, requestData, {
                 headers: {
@@ -196,6 +195,7 @@ const MembershipManagement = () => {
                     "Content-Type": "application/json",
                 },
             });
+            console.log(API_URL);
 
             message.success("Membership created successfully!");
             setIsModalOpen(false);
@@ -238,7 +238,7 @@ const MembershipManagement = () => {
             </div>
             <div className='main-content-title-card'>
                 <div className='title-box'>
-                    <h1 className="page-title">Membership Management</h1>
+                    <h2 className="page-title">Membership Management</h2>
                     <p className="page-subtitle">Allow you to view, create, edit, or delete memberships.</p>
                 </div>
                 <Button type="primary" className="add-membership-btn" onClick={showModal}>

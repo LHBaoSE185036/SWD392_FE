@@ -48,6 +48,10 @@ const ViewMembershipModal = ({ membership, onClose }) => {
                 </div>
                 <div className="modal-body">
                     <div className="detail-row">
+                        <span className="detail-label">ID:</span>
+                        <span className="detail-value">{membership.id}</span>
+                    </div>
+                    <div className="detail-row">
                         <span className="detail-label">Name:</span>
                         <span className="detail-value">{membership.name}</span>
                     </div>
@@ -251,6 +255,7 @@ const MembershipTable = ({ searchText, onRefresh }) => {
             <table className="membership-table">
                 <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Name</th>
                         <th>Type</th>
                         <th>Description</th>
@@ -265,6 +270,7 @@ const MembershipTable = ({ searchText, onRefresh }) => {
                     {filteredMemberships.length > 0 ? (
                         filteredMemberships.map((membership, index) => (
                             <tr key={index}>
+                                <td>{membership.id}</td>
                                 <td>{membership.name}</td>
                                 <td>{membership.type}</td>
                                 <td>{membership.description}</td>
