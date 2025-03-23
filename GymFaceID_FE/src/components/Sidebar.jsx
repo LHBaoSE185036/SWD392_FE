@@ -4,6 +4,7 @@ import { UserOutlined, DashboardOutlined, SettingOutlined, ArrowLeftOutlined, Ar
 import PersonIcon from '@mui/icons-material/Person';
 import CardMembershipIcon from '@mui/icons-material/CardMembership';
 import SupervisedUserCircleIcon from '@mui/icons-material/SupervisedUserCircle';
+import BusinessIcon from '@mui/icons-material/Business';
 import { useNavigate } from "react-router-dom";
 import { useSwipeable } from 'react-swipeable';
 
@@ -42,6 +43,9 @@ const Sidebar = () => {
                 </Menu.Item>
                 <Menu.Item key="/AdminPage/AccountManagement" icon={<SupervisedUserCircleIcon style={{ fontSize: "24px" }} />}>
                     Account Management
+                </Menu.Item>
+                <Menu.Item key="/AdminPage/CustomerMembershipManagement" icon={<BusinessIcon style={{ fontSize: "24px" }} />}>
+                    Customer Membership Managment
                 </Menu.Item>
                 {/*<Menu.Item key="/" icon={<DriveFileRenameOutline style={{ fontSize: "24px" }}/>}>*/}
                 {/*  Func 2*/}

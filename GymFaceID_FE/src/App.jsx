@@ -14,6 +14,7 @@ import HomePage from "./pages/User/HomePage/HomePage";
 import UserManagement from "./pages/Admin/UserManagement/UserManagement";
 import MembershipManagement from "./pages/Admin/MembershipManagement/MembershipManagement";
 import AccountManagement from "./pages/Admin/AccountManagement/AccountManagement";
+import CustomerMembershipManagement from "./pages/Admin/CustomerMembershipManagement/CustomerMembershipManagement";
 
 import ProtectedRoutes from "./utils/ProtectedRoutes";
 import FrontPage from "./pages/Front-page/FrontPage";
@@ -58,6 +59,7 @@ function AppRoutes() {
                     <Route path="UserManagement" element={<UserManagement />} />
                     <Route path="MembershipManagement" element={<MembershipManagement />} />
                     <Route path="AccountManagement" element={<AccountManagement />} />
+                    <Route path="CustomerMembershipManagement" element={<CustomerMembershipManagement />} />
                 </Route>
             </Route>
         </Routes>
