@@ -51,9 +51,10 @@ function AppRoutes() {
             <Route path="/" element={<ThemeProvider><FrontPage /></ThemeProvider>} />
             <Route path="/login" element={<Login />} />
 
+            <Route path="/HomePage" element={<HomePage />} />
+
             <Route element={user ? <ProtectedRoutes user={user} /> : <ProtectedRoutes user={userAuth} />}>
                 <Route path="/role-selection" element={<RoleSelect />} />
-                <Route path="/HomePage" element={<HomePage />} />
 
                 <Route path="/AdminPage" element={<MainLayout />}>
                     <Route path="UserManagement" element={<UserManagement />} />
