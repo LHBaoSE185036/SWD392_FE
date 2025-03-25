@@ -255,3 +255,28 @@
     transform: translateY(-200%);
     transition: transform 0.4s ease;
 }
+
+.passToggle {
+    border-left: 2px solid #ffffff99;
+    padding: 5px;
+    position: absolute;
+    right: 15%;
+    top: 248px;
+    display: flex;
+}
+.passToggle.show { flex-direction: row-reverse; }
+.passToggle.hide { flex-direction: row; }
+
+.passToggle svg {
+    opacity: 0;
+}
+
+.passToggle svg.show {
+    opacity: 1;
+    color: #333;
+}
+
+.passToggle svg.hide {
+    opacity: 1;
+    color: #555;
+}

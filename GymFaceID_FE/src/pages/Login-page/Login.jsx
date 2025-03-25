@@ -1,45 +1,43 @@
-import React, { useState } from 'react'
-import { auth, provider } from "../../firebase"
-import { signInWithPopup } from 'firebase/auth'
+import React, { useState } from 'react';
+import { auth, provider } from "../../firebase";
+import { signInWithPopup } from 'firebase/auth';
 import { useAuth } from '../../features/Auth/useAuth';
 
 import { Box } from '@mui/material';
+import { Visibility, VisibilityOff, Password } from '@mui/icons-material';
 
-import "./Login.css"
+import "./Login.css";
 import GoogleIcon from '../../assets/24px.svg';
 import GoogleLogo from '../../assets/272px-Google_2015_logo.png';
-import Logo from '../../assets/LightMainLogo.png'
+import Logo from '../../assets/LightMainLogo.png';
 import { useNavigate } from 'react-router-dom';
-import { Password } from '@mui/icons-material';
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false); // ✅ State for password visibility
 
   const [error, setError] = useState(null);
   const [switched, setSwitched] = useState(false);
   const navigate = useNavigate();
-  const { userAuth, login } = useAuth();
+  const { login } = useAuth();
 
   const handleClick = () => {
     setSwitched(!switched);
-  }
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prev) => !prev);
+  };
 
   const handleGoogleLogin = async () => {
     try {
       const result = await signInWithPopup(auth, provider);
-      //console.log("User Signed In: ", result.user);
       sessionStorage.setItem("GG-username", result.user.displayName);
       navigate("/role-selection");
     } catch (error) {
       console.error("Google Login Failed:", error);
-      if (error.code === "auth/network-request-failed") {
-        setError("Network Error. Please check your internet connection and try again.");
-      }
-      else{
-        setError("Failed to login. Please try again.");
-      }
-      
+      setError("Failed to login. Please try again.");
     }
   };
 
@@ -47,10 +45,9 @@ export default function Login() {
     e.preventDefault();
     try {
       const role = await login(username, password);
-  
+
       if (role) {
         console.log(`Logged in as ${role}`);
-        
         setTimeout(() => {
           navigate(role === "ADMIN" ? "/AdminPage" : "/HomePage");
         }, 100);
@@ -68,30 +65,25 @@ export default function Login() {
       <div className="switch-toggle" onClick={handleClick} 
         style={!switched ? { border: "5px solid gray", background: "#ffffff80", transition: "border 0.4s ease" } :
                            { border: "5px solid white", background: "#80808080", transition: "border 0.4s ease" }}>
-          <Password className="usernamePassLogin"/>
-          <img src={GoogleIcon} alt='Google' className="googleLogin"/>
-        <div
-          className="switch-button"
+        <Password className="usernamePassLogin"/>
+        <img src={GoogleIcon} alt='Google' className="googleLogin"/>
+        <div className="switch-button"
           style={!switched ? { top: "2px", border: "5px solid gray", transition: "border 0.4s ease" } :
                              { bottom: "2px", border: "5px solid white", transition: "border 0.4s ease" }}
         ></div>
       </div>
+
       <Box className={switched ? "googleLoginBox" : "googleLoginBox away"}>
         <img src={Logo} alt="Logo" className="logo" />
         <img src={GoogleLogo} alt='Google Logo' className='GGLogo' />
           
         {error && <p className='errorMessage'>{error}</p>}
-        {/*user ? 
-        <button onClick={handlenavigate} className='loginButton'>
-            <DirectionsWalk/> Head on in <ArrowForward className='GGIcon'/>
-        </button> 
-        : */}
-          <button onClick={handleGoogleLogin} className='loginButton'>
-            <img src={GoogleIcon} alt='Google Icon' className='GGIcon' /> Login with Google
-          </button>
+        <button onClick={handleGoogleLogin} className='loginButton'>
+          <img src={GoogleIcon} alt='Google Icon' className='GGIcon' /> Login with Google
+        </button>
       </Box> 
         
-      <Box className={switched ?  "usernamePassLoginBox away" : "usernamePassLoginBox"}>
+      <Box className={switched ? "usernamePassLoginBox away" : "usernamePassLoginBox"}>
         <form onSubmit={handleNormalLogin}>
           <div className="input-field">
             <label>Username</label>
@@ -106,21 +98,24 @@ export default function Login() {
           </div>
           <div className="input-field">
             <label>Password</label>
-              <input
+            <input
                 className="input"
-                type="password"
+                type={showPassword ? "text" : "password"}
                 placeholder="Enter your password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-          </div>
+              <div className={`passToggle ${showPassword ? 'hide' : 'show'}`} onClick={togglePasswordVisibility}>  
+                <Visibility className={showPassword ? 'show' : ''}/> <VisibilityOff className={showPassword ? '' : 'hide'}/>
+              </div>
+            </div>
           {error && <p className="error-message">{error}</p>}
-          <button onClick={handleNormalLogin} className='loginButton' type="submit">
+          <button className='loginButton' type="submit">
             Login
           </button>
         </form>
       </Box>
     </div>
-  )
+  );
 }

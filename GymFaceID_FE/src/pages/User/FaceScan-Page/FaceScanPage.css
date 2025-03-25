@@ -17,11 +17,21 @@
 
 .webcam-wrapper {
     position: relative;
-    border: 1px solid aqua;
     border-radius: 6px;
     padding: 8px;
     background-color: transparent;
     margin-bottom: 40px;
+}
+
+.webcam-wrapper:has(.webcam) {
+    border: 1px solid aqua;
+    transition: border 0.4s ease;
+}
+.webcam-wrapper:has(.captured-image) {
+    border: 1px solid transparent;
+    transition: border 0.3s ease, padding 0.4s ease;
+    padding: 4px;
+    box-shadow: 1px 10px 60px black;
 }
 
 .captured-image {
@@ -34,6 +44,13 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    align-items: center;
+}
+
+.button-container .capture-btn {
+    width: 100px;
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
 

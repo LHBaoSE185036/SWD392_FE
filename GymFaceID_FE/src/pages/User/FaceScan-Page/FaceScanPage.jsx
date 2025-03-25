@@ -2,7 +2,7 @@ import React, { useState, useRef, useCallback } from "react";
 import Webcam from "react-webcam";
 import { useNavigate } from "react-router-dom";
 import "./FaceScanPage.css";
-import { FileUpload } from "@mui/icons-material";
+import { FileUpload, SensorOccupied } from "@mui/icons-material";
 import { useRekognition } from "../../../features/Rekognition/useRekognition";
 
 export default function FaceScanPage() {
@@ -67,7 +67,7 @@ export default function FaceScanPage() {
 
       <div className="button-container">
         {!capturedImage ? (
-          <button className="capture-btn" onClick={capture}>Capture</button>
+          <button className="capture-btn" onClick={capture}><SensorOccupied/></button>
         ) : (
           <>
             <button className="retake-btn" onClick={retakePhoto}>Retake</button>
