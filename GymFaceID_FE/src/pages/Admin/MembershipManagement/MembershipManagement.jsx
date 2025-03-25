@@ -24,6 +24,18 @@ const MembershipManagement = () => {
         slotTimeRequest: []
     });
 
+    const slotTimesPresets = {
+        "Khung giờ A": [
+            { slotTimeType: "Sáng", startTime: "05:30:00", endTime: "08:00:00" },
+            { slotTimeType: "Tối", startTime: "18:00:00", endTime: "21:00:00" }
+        ],
+        "Khung giờ B": [
+            { slotTimeType: "Sáng 1", startTime: "08:00:00", endTime: "11:00:00" },
+            { slotTimeType: "Sáng 2", startTime: "11:00:00", endTime: "14:00:00" },
+            { slotTimeType: "Chiều", startTime: "15:00:00", endTime: "18:00:00" }
+        ]
+    };
+
     const storedUser = sessionStorage.getItem("username");
     const storedGmailUser = sessionStorage.getItem("GG-username");
 
@@ -55,11 +67,21 @@ const MembershipManagement = () => {
     };
 
     const handleNumberChange = (name, value) => {
-        setFormData((prev) => ({
-            ...prev,
-            [name]: value,
-        }));
+        if (name === "slotTimeType") {
+            const predefinedSlots = slotTimesPresets[value] || [];
+            setFormData((prev) => ({
+                ...prev,
+                slotTimeType: value,
+                slotTimeRequest: predefinedSlots
+            }));
+        } else {
+            setFormData((prev) => ({
+                ...prev,
+                [name]: value,
+            }));
+        }
     };
+
 
     const updateSlotTimeRequest = (index, key, value) => {
         setFormData((prev) => {
@@ -83,13 +105,11 @@ const MembershipManagement = () => {
         }));
     };
 
-    // Function to validate time format (HH:MM or HH:MM:SS)
     const isValidTimeFormat = (timeString) => {
         const timeRegex = /^([0-1]?[0-9]|2[0-3]):([0-5][0-9])(:[0-5][0-9])?$/;
         return timeRegex.test(timeString);
     };
 
-    // Add missing :00 for HH:MM format to make it HH:MM:SS
     const formatTimeString = (timeString) => {
         if (!timeString) return "";
 
@@ -108,12 +128,10 @@ const MembershipManagement = () => {
     const validateForm = () => {
         let errors = {};
 
-        // Basic field validations
         if (!formData.name || !formData.name.trim()) errors.name = "Membership Name is required";
         if (!formData.type || !formData.type.trim()) errors.type = "Type is required";
         if (!formData.description || !formData.description.trim()) errors.description = "Description is required";
 
-        // Number validations
         if (!formData.trainingDay) errors.trainingDay = "Training Day is required";
         else if (formData.trainingDay <= 0) errors.trainingDay = "Training Day must be a positive number";
 
@@ -125,7 +143,6 @@ const MembershipManagement = () => {
 
         if (!formData.slotTimeType || !formData.slotTimeType.trim()) errors.slotTimeType = "Slot Time Type is required";
 
-        // Slot time validations
         if (formData.slotTimeRequest.length === 0) {
             errors.slotTimeRequest = "At least one slot time is required";
         } else {
@@ -146,7 +163,6 @@ const MembershipManagement = () => {
                     errors[`endTime_${index}`] = `End Time must be in format HH:MM or HH:MM:SS`;
                 }
 
-                // Validate time range - only if both times are valid
                 if (slot.startTime && slot.endTime &&
                     isValidTimeFormat(slot.startTime) && isValidTimeFormat(slot.endTime)) {
                     const startMoment = moment(formatTimeString(slot.startTime), "HH:mm:ss");
@@ -361,28 +377,19 @@ const MembershipManagement = () => {
                     </div>
 
                     <Form.Item
-                        label="Slot Time Type (ex: Khung giờ A, Khung giờ B)"
+                        label="Slot Time Type"
                         validateStatus={formErrors.slotTimeType ? "error" : ""}
                         help={formErrors.slotTimeType}
                         required
                     >
-                        <Input
-                            name="slotTimeType"
-                            value={formData.slotTimeType}
-                            onChange={handleChange}
-                            placeholder="Enter general slot time type"
-                        />
-                    </Form.Item>
-
-                    <Form.Item
-                        label="Slot Time Request"
-                        validateStatus={formErrors.slotTimeRequest ? "error" : ""}
-                        help={formErrors.slotTimeRequest}
-                        required
-                    >
-                        <Button type="dashed" onClick={addSlotTime} style={{ marginBottom: '10px' }}>
-                            + Add Slot Time
-                        </Button>
+                        <Select
+                            placeholder="Select slot time type"
+                            value={formData.slotTimeType || undefined}
+                            onChange={(value) => handleNumberChange("slotTimeType", value)}
+                        >
+                            <Select.Option value="Khung giờ A">Khung giờ A</Select.Option>
+                            <Select.Option value="Khung giờ B">Khung giờ B</Select.Option>
+                        </Select>
                     </Form.Item>
 
                     {formData.slotTimeRequest.map((slot, index) => (
@@ -394,72 +401,39 @@ const MembershipManagement = () => {
                         }}>
                             <h4>Slot Time {index + 1}</h4>
 
-                            <Form.Item
-                                label="Slot Time Type"
-                                validateStatus={formErrors[`slotTimeType_${index}`] ? "error" : ""}
-                                help={formErrors[`slotTimeType_${index}`]}
-                                required
-                            >
+                            <Form.Item label="Slot Time Type">
                                 <Input
-                                    placeholder="e.g. Sáng, Tối"
                                     value={slot.slotTimeType}
-                                    onChange={(e) => updateSlotTimeRequest(index, "slotTimeType", e.target.value)}
+                                    readOnly
                                 />
                             </Form.Item>
 
                             <div style={{ display: 'flex', gap: '16px' }}>
                                 <Form.Item
-                                    label="Start Time (HH:MM or HH:MM:SS)"
-                                    validateStatus={formErrors[`startTime_${index}`] ? "error" : ""}
-                                    help={formErrors[`startTime_${index}`]}
-                                    required
+                                    label="Start Time"
                                     style={{ width: '50%' }}
                                 >
                                     <Input
-                                        placeholder="e.g. 08:00 or 08:00:00"
                                         value={slot.startTime}
-                                        onChange={(e) => updateSlotTimeRequest(index, "startTime", e.target.value)}
+                                        readOnly
                                     />
                                 </Form.Item>
 
                                 <Form.Item
-                                    label="End Time (HH:MM or HH:MM:SS)"
-                                    validateStatus={formErrors[`endTime_${index}`] ? "error" : ""}
-                                    help={formErrors[`endTime_${index}`]}
-                                    required
+                                    label="End Time"
                                     style={{ width: '50%' }}
                                 >
                                     <Input
-                                        placeholder="e.g. 09:30 or 09:30:00"
                                         value={slot.endTime}
-                                        onChange={(e) => updateSlotTimeRequest(index, "endTime", e.target.value)}
+                                        readOnly
                                     />
                                 </Form.Item>
                             </div>
-
-                            {formErrors[`timeRange_${index}`] && (
-                                <div style={{ color: '#ff4d4f', marginBottom: '8px' }}>
-                                    {formErrors[`timeRange_${index}`]}
-                                </div>
-                            )}
-
-                            {index > 0 && (
-                                <Button
-                                    danger
-                                    onClick={() => {
-                                        setFormData(prev => ({
-                                            ...prev,
-                                            slotTimeRequest: prev.slotTimeRequest.filter((_, i) => i !== index)
-                                        }));
-                                    }}
-                                >
-                                    Remove Slot
-                                </Button>
-                            )}
                         </div>
                     ))}
                 </Form>
             </Modal>
+
 
             <div className='table-container'>
                 <MembershipTable searchText={searchText} />
