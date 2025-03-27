@@ -152,7 +152,7 @@
               0px 10px 15px blue;
   border-radius: 10px;
   z-index: 1;
-  animation: 20s scan ease infinite;
+  animation: 15s scan ease infinite;
 }
 
 @keyframes scan {
@@ -163,7 +163,7 @@
     top: 100%;
   }
   100% {
-    top: -10%;
+    top: -5%;
   }
 }
 

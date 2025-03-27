@@ -51,7 +51,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 999;
 }
+body:has(.popupOverlay) { overflow: hidden; background-color: #333;}
 
 .popupBox {
     background: #383838;

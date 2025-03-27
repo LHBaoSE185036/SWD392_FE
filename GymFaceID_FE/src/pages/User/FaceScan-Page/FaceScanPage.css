@@ -24,7 +24,7 @@
 }
 
 .webcam-wrapper:has(.webcam) {
-    border: 1px solid aqua;
+    border: 1px solid lightblue;
     transition: border 0.4s ease;
 }
 .webcam-wrapper:has(.captured-image) {
@@ -78,4 +78,88 @@
     translate: 250%;
     opacity: 1;
     transition: all 0.3s ease;
+}
+
+.lineScanVert {
+    position: absolute;
+    height: 34rem;
+    width: 5px;
+    top: -4%;
+    background: cyan;
+    box-shadow: 0px 2px 15px aqua,
+                0px -5px 15px greenyellow,
+                0px 10px 15px blue;
+    border-radius: 10px;
+    z-index: 10;
+    animation: 10s scanSide ease infinite;
+  }
+
+  .lineScanHori {
+    position: absolute;
+    height: 5px;
+    width: 56rem;
+    top: 0; left: -2%;
+    background: cyan;
+    box-shadow: 0px 2px 15px aqua,
+                0px -5px 15px greenyellow,
+                0px 10px 15px blue;
+    border-radius: 10px;
+    z-index: 10;
+    animation: 10s scanUpDown ease infinite
+  }
+  
+  @keyframes scanSide {
+    0% {
+      left: -5%;
+    }
+    50% {
+      left: 105%;
+    }
+    100% {
+      left: -5%;
+    }
+  }
+
+  @keyframes scanUpDown {
+    0% {
+      top: -5%;
+    }
+    50% {
+      top: 105%;
+    }
+    100% {
+      top: -5%;
+    }
+  }
+
+  .popupOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.popupBox {
+    background: #383838;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    text-align: center;
+    color: white;
+}
+
+.closeButton {
+    margin-top: 15px;
+    padding: 10px 15px;
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
