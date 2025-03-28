@@ -18,6 +18,9 @@
 .webcam-wrapper {
   position: absolute;
   top: 80px;
+  max-width: 900px;
+  max-height: 500px;
+  overflow: hidden;
   border-radius: 6px;
   padding: 8px;
   background-color: transparent;
@@ -28,6 +31,8 @@
 .webcam-wrapper.selected {
     position: absolute;
     top: 80px;
+    max-width: 900px;
+    max-height: 500px;
     border-radius: 6px;
     padding: 8px;
     background-color: transparent;
