@@ -21,7 +21,7 @@ const Services = () => {
   };
 
   const handleRegisterDirect = () => {
-    navigate("/login");
+    navigate("/AdminPage");
   };
 
   return (
