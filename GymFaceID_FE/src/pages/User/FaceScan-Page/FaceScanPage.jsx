@@ -88,15 +88,11 @@ export default function FaceScanPage() {
 
   const checkDoorStatus = (checkInSuccess, checkOutSuccess) => {
     setDoorOpen(false);
-    if (checkInSuccess === null) checkInSuccess = doorOpen;
-    if (checkOutSuccess === null) checkOutSuccess = doorOpen;
 
     if (checkInSuccess || checkOutSuccess) {
       setTimeout(() => setDoorOpen(true), 1000);
-      setDoorOpen(false);
-    } else {
-      setDoorOpen(false);
-    }
+    } 
+    setDoorOpen(false)
   };
 
   const retakePhoto = () => {
@@ -127,9 +123,9 @@ export default function FaceScanPage() {
   return (
     <div className="face-scan-container">
       <div className="checkIn-checkOut-navigator">
-        <button className={`checkBtn ${checkIn ? "clicked" : ""}`} onClick={() => setCheckIn(true)}>Check In</button>
+        <button className={`checkBtn ${checkIn ? "clicked" : ""}`} onClick={() => { setCheckIn(true); setCapturedImage(null);}}>Check In</button>
         <div></div>
-        <button className={`checkBtn ${!checkIn ? "clicked" : ""}`} onClick={() => setCheckIn(false)}>Check Out</button>
+        <button className={`checkBtn ${!checkIn ? "clicked" : ""}`} onClick={() => { setCheckIn(false); setCapturedImage(null);} }>Check Out</button>
       </div>
 
       <button className="logout-Btn back-btn" onClick={() => navigate("/")}>Back</button>
