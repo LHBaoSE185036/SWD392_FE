@@ -5,7 +5,7 @@ import { SearchOutlined } from '@mui/icons-material';
 import AccountTable from '../../../components/Tables/AccountTable';
 import './AccountManagement.css';
 
-const API_URL = "/api/Account/Account";
+const API_URL = "/api/account/account";
 const ADDAPI_URL = "/api/account/create"
 const TOKEN = sessionStorage.getItem("accessToken");
 const { Option } = Select;
