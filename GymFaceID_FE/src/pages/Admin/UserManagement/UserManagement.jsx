@@ -5,7 +5,7 @@ import { SearchOutlined } from '@mui/icons-material';
 import UserTable from '../../../components/Tables/UserTable';
 import './UserManagement.css';
 
-const API_URL = "http://157.230.40.203:8080/gym-face-id-access/api/v1/customer/customer";
+const API_URL = "/api/customer/customer";
 const TOKEN = sessionStorage.getItem("accessToken");
 
 const UserManagement = () => {

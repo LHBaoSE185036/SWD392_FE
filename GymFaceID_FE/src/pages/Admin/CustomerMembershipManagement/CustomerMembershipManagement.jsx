@@ -4,11 +4,11 @@ import { Modal, Button, Form, message, Select } from 'antd';
 import { SearchOutlined, DeleteOutline, VisibilityOutlined, CloseOutlined } from '@mui/icons-material';
 import "./CustomerMembershipManagement.css";
 
-const API_URL = "http://157.230.40.203:8080/gym-face-id-access/api/v1/customer-membership/all";
-const CUSTOMERS_API_URL = "http://157.230.40.203:8080/gym-face-id-access/api/v1/customer/customers";
-const MEMBERSHIPS_API_URL = "http://157.230.40.203:8080/gym-face-id-access/api/v1/membership/memberships";
-const REGISTER_API_URL = "http://157.230.40.203:8080/gym-face-id-access/api/v1/customer-membership/register";
-const DELETE_API_URL = "http://157.230.40.203:8080/gym-face-id-access/api/v1/customer-membership"
+const API_URL = "/api/customer-membership/all";
+const CUSTOMERS_API_URL = "/api/customer/customers";
+const MEMBERSHIPS_API_URL = "/api/membership/memberships";
+const REGISTER_API_URL = "/api/customer-membership/register";
+const DELETE_API_URL = "/api/customer-membership"
 const TOKEN = sessionStorage.getItem("accessToken");
 const { Option } = Select;
 

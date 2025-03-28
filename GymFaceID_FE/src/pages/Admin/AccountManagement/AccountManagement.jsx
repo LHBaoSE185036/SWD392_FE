@@ -5,8 +5,8 @@ import { SearchOutlined } from '@mui/icons-material';
 import AccountTable from '../../../components/Tables/AccountTable';
 import './AccountManagement.css';
 
-const API_URL = "http://157.230.40.203:8080/gym-face-id-access/api/v1/account/accounts";
-const ADDAPI_URL = "http://157.230.40.203:8080/gym-face-id-access/api/v1/account/create"
+const API_URL = "/api/account/accounts";
+const ADDAPI_URL = "/api/account/create"
 const TOKEN = sessionStorage.getItem("accessToken");
 const { Option } = Select;
 

@@ -1,0 +1,192 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\SWD392_FE\\GymFaceID_FE\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\SWD392_FE\\GymFaceID_FE\\src\\components\\Tables\\UserTable.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\Tables\\UserTable.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\SWD392_FE\\GymFaceID_FE\\src\\components\\Tables\\MembershipTable.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\Tables\\MembershipTable.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\SWD392_FE\\GymFaceID_FE\\src\\components\\Tables\\AccountTable.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\Tables\\AccountTable.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\SWD392_FE\\GymFaceID_FE\\src\\pages\\Admin\\UserManagement\\UserManagement.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\pages\\Admin\\UserManagement\\UserManagement.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\SWD392_FE\\GymFaceID_FE\\src\\pages\\Admin\\MembershipManagement\\MembershipManagement.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\pages\\Admin\\MembershipManagement\\MembershipManagement.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\SWD392_FE\\GymFaceID_FE\\src\\pages\\Admin\\CustomerMembershipManagement\\CustomerMembershipManagement.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\pages\\Admin\\CustomerMembershipManagement\\CustomerMembershipManagement.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\SWD392_FE\\GymFaceID_FE\\src\\pages\\Admin\\AccountManagement\\AccountManagement.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\pages\\Admin\\AccountManagement\\AccountManagement.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\SWD392_FE\\GymFaceID_FE\\vite.config.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vite.config.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserTable.jsx",
+              "DocumentMoniker": "D:\\SWD392_FE\\GymFaceID_FE\\src\\components\\Tables\\UserTable.jsx",
+              "RelativeDocumentMoniker": "src\\components\\Tables\\UserTable.jsx",
+              "ToolTip": "D:\\SWD392_FE\\GymFaceID_FE\\src\\components\\Tables\\UserTable.jsx",
+              "RelativeToolTip": "src\\components\\Tables\\UserTable.jsx",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAAkAAABWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
+              "WhenOpened": "2025-03-28T14:17:40.132Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MembershipTable.jsx",
+              "DocumentMoniker": "D:\\SWD392_FE\\GymFaceID_FE\\src\\components\\Tables\\MembershipTable.jsx",
+              "RelativeDocumentMoniker": "src\\components\\Tables\\MembershipTable.jsx",
+              "ToolTip": "D:\\SWD392_FE\\GymFaceID_FE\\src\\components\\Tables\\MembershipTable.jsx",
+              "RelativeToolTip": "src\\components\\Tables\\MembershipTable.jsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAABgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
+              "WhenOpened": "2025-03-28T14:17:08.102Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AccountTable.jsx",
+              "DocumentMoniker": "D:\\SWD392_FE\\GymFaceID_FE\\src\\components\\Tables\\AccountTable.jsx",
+              "RelativeDocumentMoniker": "src\\components\\Tables\\AccountTable.jsx",
+              "ToolTip": "D:\\SWD392_FE\\GymFaceID_FE\\src\\components\\Tables\\AccountTable.jsx",
+              "RelativeToolTip": "src\\components\\Tables\\AccountTable.jsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
+              "WhenOpened": "2025-03-28T14:15:44.307Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:138:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:139:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:332826238:0:{83107a3e-496a-485e-b455-16ddb978e55e}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserManagement.jsx",
+              "DocumentMoniker": "D:\\SWD392_FE\\GymFaceID_FE\\src\\pages\\Admin\\UserManagement\\UserManagement.jsx",
+              "RelativeDocumentMoniker": "src\\pages\\Admin\\UserManagement\\UserManagement.jsx",
+              "ToolTip": "D:\\SWD392_FE\\GymFaceID_FE\\src\\pages\\Admin\\UserManagement\\UserManagement.jsx",
+              "RelativeToolTip": "src\\pages\\Admin\\UserManagement\\UserManagement.jsx",
+              "ViewState": "AgIAAH4AAAAAAAAAAAAAAAcAAABXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
+              "WhenOpened": "2025-03-28T14:14:54.343Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MembershipManagement.jsx",
+              "DocumentMoniker": "D:\\SWD392_FE\\GymFaceID_FE\\src\\pages\\Admin\\MembershipManagement\\MembershipManagement.jsx",
+              "RelativeDocumentMoniker": "src\\pages\\Admin\\MembershipManagement\\MembershipManagement.jsx",
+              "ToolTip": "D:\\SWD392_FE\\GymFaceID_FE\\src\\pages\\Admin\\MembershipManagement\\MembershipManagement.jsx",
+              "RelativeToolTip": "src\\pages\\Admin\\MembershipManagement\\MembershipManagement.jsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
+              "WhenOpened": "2025-03-28T14:14:20.823Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CustomerMembershipManagement.jsx",
+              "DocumentMoniker": "D:\\SWD392_FE\\GymFaceID_FE\\src\\pages\\Admin\\CustomerMembershipManagement\\CustomerMembershipManagement.jsx",
+              "RelativeDocumentMoniker": "src\\pages\\Admin\\CustomerMembershipManagement\\CustomerMembershipManagement.jsx",
+              "ToolTip": "D:\\SWD392_FE\\GymFaceID_FE\\src\\pages\\Admin\\CustomerMembershipManagement\\CustomerMembershipManagement.jsx",
+              "RelativeToolTip": "src\\pages\\Admin\\CustomerMembershipManagement\\CustomerMembershipManagement.jsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
+              "WhenOpened": "2025-03-28T14:07:49.783Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AccountManagement.jsx",
+              "DocumentMoniker": "D:\\SWD392_FE\\GymFaceID_FE\\src\\pages\\Admin\\AccountManagement\\AccountManagement.jsx",
+              "RelativeDocumentMoniker": "src\\pages\\Admin\\AccountManagement\\AccountManagement.jsx",
+              "ToolTip": "D:\\SWD392_FE\\GymFaceID_FE\\src\\pages\\Admin\\AccountManagement\\AccountManagement.jsx",
+              "RelativeToolTip": "src\\pages\\Admin\\AccountManagement\\AccountManagement.jsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
+              "WhenOpened": "2025-03-28T13:43:45.035Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "vite.config.js",
+              "DocumentMoniker": "D:\\SWD392_FE\\GymFaceID_FE\\vite.config.js",
+              "RelativeDocumentMoniker": "vite.config.js",
+              "ToolTip": "D:\\SWD392_FE\\GymFaceID_FE\\vite.config.js",
+              "RelativeToolTip": "vite.config.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-03-28T12:05:57.26Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

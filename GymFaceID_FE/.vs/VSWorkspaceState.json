@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\components",
+    "\\src\\components\\Tables",
+    "\\src\\pages",
+    "\\src\\pages\\Admin",
+    "\\src\\pages\\Admin\\AccountManagement",
+    "\\src\\pages\\Admin\\CustomerMembershipManagement",
+    "\\src\\pages\\Admin\\MembershipManagement",
+    "\\src\\pages\\Admin\\UserManagement"
+  ],
+  "SelectedNode": "\\src\\components\\Tables\\UserTable.jsx",
+  "PreviewInSolutionExplorer": false
+}
