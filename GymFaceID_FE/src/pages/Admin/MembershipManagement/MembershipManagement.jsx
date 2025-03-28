@@ -6,7 +6,7 @@ import MembershipTable from '../../../components/Tables/MembershipTable';
 import { SearchOutlined } from '@mui/icons-material';
 import moment from 'moment';
 
-const API_URL = "/api/membership/membership";
+const API_URL = "http://157.230.40.203:8080/gym-face-id-access/api/v1/membership/membership";
 const TOKEN = sessionStorage.getItem("accessToken");
 
 const MembershipManagement = () => {

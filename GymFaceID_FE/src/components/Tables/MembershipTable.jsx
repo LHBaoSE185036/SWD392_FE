@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import "../styles/MembershipTable.css";
 import { DeleteOutline, VisibilityOutlined, CloseOutlined } from "@mui/icons-material";
 
-const API_URL = "/api/membership/memberships";
-const API_DELETURL = "/api/membership/membership";
+const API_URL = "http://157.230.40.203:8080/gym-face-id-access/api/v1/membership/memberships";
+const API_DELETURL = "http://157.230.40.203:8080/gym-face-id-access/api/v1/membership/membership";
 const TOKEN = sessionStorage.getItem("accessToken");
 
 const ViewMembershipModal = ({ membership, onClose }) => {

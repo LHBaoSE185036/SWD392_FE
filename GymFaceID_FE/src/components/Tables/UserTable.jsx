@@ -6,8 +6,8 @@ import { AssignmentIndOutlined, DeleteOutline, DriveFileRenameOutline, UploadOut
 import { registerRekognition } from "../../features/Rekognition/registerRekognition";
 import Webcam from "react-webcam";
 
-const API_URL = "/api/customer/customers";
-const API_SINGLE_URL = "/api/customer";
+const API_URL = "http://157.230.40.203:8080/gym-face-id-access/api/v1/customer/customers";
+const API_SINGLE_URL = "http://157.230.40.203:8080/gym-face-id-access/api/v1/customer/";
 const TOKEN = sessionStorage.getItem("accessToken");
 
 const UserTable = () => {

@@ -3,8 +3,8 @@ import "../styles/AccountTable.css";
 import { Modal, Button, Input, Select } from "antd";
 import { DeleteOutline, DriveFileRenameOutline, VisibilityOutlined } from "@mui/icons-material";
 
-const API_URL = "/api/account/accounts";
-const API_SINGLE_URL = "/api/account";
+const API_URL = "http://157.230.40.203:8080/gym-face-id-access/api/v1/account/accounts";
+const API_SINGLE_URL = "http://157.230.40.203:8080/gym-face-id-access/api/v1/account";
 const TOKEN = sessionStorage.getItem("accessToken");
 const { Option } = Select;
 
