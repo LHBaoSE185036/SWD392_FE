@@ -57,6 +57,7 @@ export default function FaceScanPage() {
       setScanResult({ title: response.data.checkInResult, message: response.data.message });
 
       if (checkInSuccess) checkDoorStatus(checkInSuccess, null);
+      else {checkDoorStatus(checkInSuccess, null);}
     } catch (error) {
       console.error("Upload failed:", error);
       setScanResult({ title: "Error", message: "Failed to process the image." });
@@ -76,6 +77,7 @@ export default function FaceScanPage() {
       setScanResult({ title: response.data.checkOutResult, message: response.data.message });
 
       if (checkOutSuccess) checkDoorStatus(null, checkOutSuccess);
+      else {checkDoorStatus(null, checkOutSuccess);}
     } catch (error) {
       console.error("Upload failed:", error);
       setScanResult({ title: "Error", message: "Failed to process the image." });
@@ -85,6 +87,7 @@ export default function FaceScanPage() {
   };
 
   const checkDoorStatus = (checkInSuccess, checkOutSuccess) => {
+    setDoorOpen(false);
     if (checkInSuccess === null) checkInSuccess = doorOpen;
     if (checkOutSuccess === null) checkOutSuccess = doorOpen;
 
