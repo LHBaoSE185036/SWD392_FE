@@ -48,6 +48,21 @@
         color: #e53935;
     }
 
+.register-btn {
+    padding: 5px 0;
+    width: 120px;
+    background-color: transparent;
+    border: 2px solid #333;
+    color: #333;
+    transition: all 0.4s ease;
+}
+
+    .register-btn:hover {
+        color: white; border: 2px solid #333;
+        background-color: #333;
+        transition: all 0.3s ease;
+    }
+
 .time-slots {
     display: flex;
     flex-direction: column;

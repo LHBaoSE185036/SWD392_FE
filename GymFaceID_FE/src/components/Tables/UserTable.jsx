@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../styles/UserTable.css";
 import { Modal, Button, Input } from "antd";
-import { DeleteOutline, DriveFileRenameOutline, VisibilityOutlined } from "@mui/icons-material";
+import { AssignmentIndOutlined, DeleteOutline, DriveFileRenameOutline, VisibilityOutlined } from "@mui/icons-material";
+
+import { registerRekognition } from "../../features/Rekognition/registerRekognition";
+import Webcam from "react-webcam";
 
 const API_URL = "/api/customer/customers";
 const API_SINGLE_URL = "/api/customer";
@@ -21,6 +24,12 @@ const UserTable = () => {
         phoneNumber: "",
         email: "",
     });
+
+    const [isFaceScanModalOpen, setIsFaceScanModalOpen] = useState(false);
+    const [scanning, setScanning] = useState(false);
+    const [capturedImage, setCapturedImage] = useState(null);
+    const [selectedCustomerId, setSelectedCustomerId] = useState(null);
+    const webcamRef = useRef(null);
 
     useEffect(() => {
         fetchUsers();
@@ -144,6 +153,40 @@ const UserTable = () => {
         }
     };
 
+    const showFaceScanModal = (user) => {
+        setSelectedCustomerId(user.customerId);
+        setIsFaceScanModalOpen(true);
+    };
+
+    const captureImage = () => {
+        if (webcamRef.current) {
+          const imageSrc = webcamRef.current.getScreenshot();
+          setCapturedImage(imageSrc);
+        }
+    };
+
+    const handleRegisterFace = async () => {
+        if (!capturedImage || !selectedCustomerId) return;
+        
+        try {
+          setScanning(true);
+          await registerRekognition(capturedImage, selectedCustomerId);
+          alert("Face registered successfully!");
+          setIsFaceScanModalOpen(false);
+          setCapturedImage(null);
+        } catch (error) {
+          alert("Face registration failed!");
+        } finally {
+          setScanning(false);
+        }
+    };
+
+    const videoConstraints = {
+        width: 480,
+        height: 240,
+        facingMode: "user",
+    };
+
     if (loading) return <div className="loader">Loading users...</div>;
     if (error) return <div className="error">Error: {error}</div>;
 
@@ -173,6 +216,9 @@ const UserTable = () => {
                                 </button>
                                 <button className="delete-btn" onClick={() => showDeleteModal(user)}>
                                     <DeleteOutline />
+                                </button>
+                                <button className="register-btn" onClick={() => showFaceScanModal(user)}>
+                                    <AssignmentIndOutlined />
                                 </button>
                             </td>
                         </tr>
@@ -266,6 +312,34 @@ const UserTable = () => {
                         <p><strong>Phone Number:</strong> {selectedUser.phoneNumber}</p>
                     </div>
                 )}
+            </Modal>
+
+            <Modal
+                title="Register Face ID"
+                open={isFaceScanModalOpen}
+                onCancel={() => setIsFaceScanModalOpen(false)}
+                footer={[
+                    <Button key="cancel" onClick={() => setIsFaceScanModalOpen(false)}>Cancel</Button>,
+                    <Button key="register" type="primary" disabled={!capturedImage || scanning} onClick={handleRegisterFace}>
+                    {scanning ? "Processing..." : "Register"}
+                    </Button>,
+                ]}
+                >
+                <div className="face-scan-containe">
+                    {!capturedImage ? (
+                    <Webcam ref={webcamRef} screenshotFormat="image/jpeg" videoConstraints={videoConstraints} className="webcam" />
+                    ) : (
+                    <img src={capturedImage} alt="Captured Face" className="captured-image" />
+                    )}
+
+                    <div className="button-containe">
+                    {!capturedImage ? (
+                        <button className="capture-btn" onClick={captureImage}>Capture</button>
+                    ) : (
+                        <button className="retake-btn" onClick={() => setCapturedImage(null)}>Rescan</button>
+                    )}
+                    </div>
+                </div>
             </Modal>
         </>
     );
