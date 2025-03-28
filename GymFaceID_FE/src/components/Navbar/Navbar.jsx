@@ -3,10 +3,8 @@ import { motion, useScroll, useMotionValueEvent, useTransform, useInView } from 
 import Toggle from "../Toggle/Toggle";
 import "./Navbar.css";
 import { Link } from "react-scroll";
-import { useNavigate } from "react-router-dom";
 
 const navbar = () => {
-    const navigate = useNavigate();
     const { scrollYProgress } = useScroll();
 
     useMotionValueEvent(scrollYProgress, "change",
@@ -22,10 +20,6 @@ const navbar = () => {
         [0.04, 1],
         ["none", "1px solid gray"]
     )
-
-    const handleRegisterDirect = () => {
-        navigate("/login");
-    };
 
     return (
         <motion.div className="n-wrapper" id="Navbar"
@@ -72,7 +66,7 @@ const navbar = () => {
                     </ul>
                 </div>
                 <Link to="contact" spy={true} smooth={true}>
-                    <button className="frontPageButton n-button" onClick={() => handleRegisterDirect()}>Register</button>
+                    <button className="frontPageButton n-button" >Contact</button>
                 </Link>
             </div>
         </motion.div>

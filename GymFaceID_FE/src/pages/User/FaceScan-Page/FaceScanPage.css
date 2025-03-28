@@ -5,7 +5,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    overflow: hidden;
 }
 
 .back-btn {
@@ -16,11 +16,23 @@
 }
 
 .webcam-wrapper {
-    position: relative;
+  position: absolute;
+  top: 80px;
+  border-radius: 6px;
+  padding: 8px;
+  background-color: transparent;
+  margin-bottom: 40px;
+  display: none;
+}
+
+.webcam-wrapper.selected {
+    position: absolute;
+    top: 80px;
     border-radius: 6px;
     padding: 8px;
     background-color: transparent;
     margin-bottom: 40px;
+    display: flex;
 }
 
 .webcam-wrapper:has(.webcam) {
@@ -39,12 +51,28 @@
     border-radius: 6px;
 }
 
+.button-container.selected {
+  position: absolute;
+  bottom: 80px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  opacity: 1; visibility: visible;
+  transform: translateY(0); transition: transform 1s ease, opacity 0.3s ease;
+}
+
 .button-container {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
+  position: absolute;
+  bottom: 80px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  opacity: 0; visibility: hidden;
+  transform: translateY(150%); transition: transform 0.5s ease, opacity 0.3s ease;
 }
 
 .button-container .capture-btn {
@@ -162,4 +190,98 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.checkIn-checkOut-navigator {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkIn-checkOut-navigator div:nth-child(2) {
+  width: 1px;
+  height: 30px;
+  background-color: white;
+}
+
+.checkBtn {
+  background-color: transparent;
+  width: 120px;
+  padding: 5px;
+  border: none; outline: none;
+  border-radius: 0;
+  font-size: 14px;
+  transition: font-size 0.4s ease;
+}.checkBtn:focus {border: none; outline: none;}
+.checkBtn:not(.clicked):hover {
+  font-size: 16px;
+  transition: font-size 0.3s ease;
+}
+
+.clicked {
+  user-select: none;
+  opacity: 0.5;
+}
+
+.doorOpens, .doorLock {
+  position: relative;
+  width: 900px;  /* Adjust width as needed */
+  height: 500px; /* Adjust height as needed */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #222222ea;
+  border: 4px solid #444;
+}
+
+.doorLeft, .doorRight {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  background-color: #222;
+  transition: transform 1s ease-in-out;
+}
+
+/* Sliding open animation */
+.doorOpens .doorLeft {
+  left: 0;
+  transform: translateX(-80%);
+}
+
+.doorOpens .doorRight {
+  right: 0;
+  transform: translateX(80%);
+}
+
+/* Closed doors (default state) */
+.doorLock .doorLeft {
+  left: 0;
+  transform: translateX(0);
+}
+
+.doorLock .doorRight {
+  right: 0;
+  transform: translateX(0);
+}
+
+/* Success text (only visible when door opens) */
+.successText, .failedText {
+  position: absolute;
+  font-size: 2rem;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.doorOpens .successText {
+  color: green;
+  opacity: 1;
+}
+
+.doorLock .failedText {
+  color: red;
+  opacity: 1;
 }

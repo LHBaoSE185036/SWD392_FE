@@ -73,6 +73,10 @@ export default function Login() {
         ></div>
       </div>
 
+      <button className="logout-Btn back-btn" onClick={() => navigate("/")}>
+        Back
+      </button>
+
       <Box className={switched ? "googleLoginBox" : "googleLoginBox away"}>
         <img src={Logo} alt="Logo" className="logo" />
         <img src={GoogleLogo} alt='Google Logo' className='GGLogo' />

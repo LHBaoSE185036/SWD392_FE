@@ -4,16 +4,22 @@ import { useNavigate } from "react-router-dom";
 import "./FaceScanPage.css";
 import { SensorOccupied } from "@mui/icons-material";
 import { useRekognition } from "../../../features/Rekognition/useRekognition";
+import { checkoutRekognition } from "../../../features/Rekognition/checkoutRekognition";
+
+import doorLeft from "../../../assets/entranceGlassDoor_Left.png";
+import doorRight from "../../../assets/entranceGlassDoor_Right.png";
 
 export default function FaceScanPage() {
   const navigate = useNavigate();
   const webcamRef = useRef(null);
+  const webcamCheckoutRef = useRef(null);
   const [capturedImage, setCapturedImage] = useState(null);
   const [scanning, setScanning] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [scanResult, setScanResult] = useState(null); // Stores API response for popup
+  const [scanResult, setScanResult] = useState(null);
+  const [checkIn, setCheckIn] = useState(true);
+  const [doorOpen, setDoorOpen] = useState(false);
 
-  // Webcam settings
   const videoConstraints = {
     width: 840,
     height: 480,
@@ -22,32 +28,32 @@ export default function FaceScanPage() {
 
   const capture = useCallback(() => {
     setScanning(true);
-
     setTimeout(() => {
       const imageSrc = webcamRef.current.getScreenshot();
       setCapturedImage(imageSrc);
       setScanning(false);
-
       console.log("Image Scanned", imageSrc);
-
-      // Automatically send the image after capture
       sendImageToAPI(imageSrc);
     }, 4000);
   }, [webcamRef]);
 
-  // Send captured image to API automatically
   const sendImageToAPI = async (image) => {
     if (!image) return;
     setLoading(true);
     try {
       const response = await useRekognition(image);
-      console.log("Image Uploaded:", response);
+      console.log("Check-In Response:", response);
 
-      // Show popup with API result
+      const checkInSuccess = response.data.checkInResult === "Success";
+
       setScanResult({
         title: response.data.checkInResult,
         message: response.data.message,
       });
+
+      if (checkInSuccess) {
+        checkDoorStatus(checkInSuccess, null); // Only checkIn result received
+      }
     } catch (error) {
       console.error("Upload failed:", error);
       setScanResult({
@@ -59,7 +65,60 @@ export default function FaceScanPage() {
     }
   };
 
-  // Reset image & popup
+  const captureCheckOut = useCallback(() => {
+    setScanning(true);
+    setTimeout(() => {
+      const imageSrc = webcamCheckoutRef.current.getScreenshot();
+      setCapturedImage(imageSrc);
+      setScanning(false);
+      console.log("Image Scanned", imageSrc);
+      sendImageToCheckOutAPI(imageSrc);
+    }, 4000);
+  }, [webcamCheckoutRef]);
+
+  const sendImageToCheckOutAPI = async (image) => {
+    if (!image) return;
+    setLoading(true);
+    try {
+      const response = await checkoutRekognition(image);
+      console.log("Check-Out Response:", response);
+
+      const checkOutSuccess = response.data.checkOutResult === "Success";
+
+      setScanResult({
+        title: response.data.checkOutResult,
+        message: response.data.message,
+      });
+
+      if (checkOutSuccess) {
+        checkDoorStatus(null, checkOutSuccess); // Only checkOut result received
+      }
+    } catch (error) {
+      console.error("Upload failed:", error);
+      setScanResult({
+        title: "Error",
+        message: "Failed to process the image.",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const checkDoorStatus = (checkInSuccess, checkOutSuccess) => {
+    if (checkInSuccess === null) checkInSuccess = doorOpen;
+    if (checkOutSuccess === null) checkOutSuccess = doorOpen;
+
+    if (checkInSuccess || checkOutSuccess) {
+      setTimeout(() => {
+        setDoorOpen(true);
+      }, 5000);
+      setDoorOpen(false);
+    }
+    else {
+      setDoorOpen(false);
+    }
+  };
+
   const retakePhoto = () => {
     setCapturedImage(null);
     setScanResult(null);
@@ -67,11 +126,12 @@ export default function FaceScanPage() {
 
   return (
     <div className="face-scan-container">
-      <div>
-        <button className="" >
+      <div className="checkIn-checkOut-navigator">
+        <button className={`checkBtn ${checkIn ? "clicked" : ""}`} onClick={() => setCheckIn(true)}>
           Check In
         </button>
-        <button className="" >
+        <div></div>
+        <button className={`checkBtn ${!checkIn ? "clicked" : ""}`} onClick={() => setCheckIn(false)}>
           Check Out
         </button>
       </div>
@@ -80,16 +140,10 @@ export default function FaceScanPage() {
         Back
       </button>
 
-      <div className="webcam-wrapper">
+      <div className={checkIn ? "webcam-wrapper selected" : "webcam-wrapper"}>
         {!capturedImage ? (
           <>
-            <Webcam
-              ref={webcamRef}
-              audio={false}
-              screenshotFormat="image/jpeg"
-              videoConstraints={videoConstraints}
-              className="webcam"
-            />
+            <Webcam ref={webcamRef} audio={false} screenshotFormat="image/jpeg" videoConstraints={videoConstraints} className="webcam" />
             {scanning && (
               <>
                 <div className="lineScanVert"></div>
@@ -102,9 +156,37 @@ export default function FaceScanPage() {
         )}
       </div>
 
-      <div className="button-container">
+      <div className={checkIn ? "button-container selected" : "button-container"}>
         {!capturedImage ? (
           <button className="capture-btn" onClick={capture} disabled={scanning || loading}>
+            {scanning ? "Scanning..." : <SensorOccupied />}
+          </button>
+        ) : (
+          <button className="retake-btn" onClick={retakePhoto} disabled={loading}>
+            Rescan
+          </button>
+        )}
+      </div>
+
+      <div className={checkIn ? "webcam-wrapper" : "webcam-wrapper selected"}>
+        {!capturedImage ? (
+          <>
+            <Webcam ref={webcamCheckoutRef} audio={false} screenshotFormat="image/jpeg" videoConstraints={videoConstraints} className="webcam" />
+            {scanning && (
+              <>
+                <div className="lineScanVert"></div>
+                <div className="lineScanHori"></div>
+              </>
+            )}
+          </>
+        ) : (
+          <img src={capturedImage} alt="Captured Face" className="captured-image" />
+        )}
+      </div>
+
+      <div className={checkIn ? "button-container" : "button-container selected"}>
+        {!capturedImage ? (
+          <button className="capture-btn" onClick={captureCheckOut} disabled={scanning || loading}>
             {scanning ? "Scanning..." : <SensorOccupied />}
           </button>
         ) : (
@@ -126,6 +208,14 @@ export default function FaceScanPage() {
           </div>
         </div>
       )}
+
+      <div className="door-status" style={{zIndex: capturedImage ? 10 : -10, position: "absolute", top: 80 }}>
+        <div className={doorOpen ? "doorOpens" : "doorLock"}>
+          <img src={doorLeft} alt="" className="doorLeft" />
+          <img src={doorRight} alt="" className="doorRight" />
+          {doorOpen ? <div className="successText">OPEN</div> : <div className="failedText">CLOSED</div>}
+        </div>
+      </div>
     </div>
   );
 }

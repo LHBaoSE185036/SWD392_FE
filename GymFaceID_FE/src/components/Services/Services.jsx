@@ -6,9 +6,10 @@ import scan from "../../assets/scan.png";
 import security from "../../assets/security.png";
 import { themeContext } from "../../Context";
 import { motion } from "framer-motion";
-//import Guide from './resume.pdf';
+import { useNavigate } from "react-router-dom";
 
 const Services = () => {
+  const navigate = useNavigate();
   // context
   const theme = useContext(themeContext);
   const darkMode = theme.state.darkMode;
@@ -17,6 +18,10 @@ const Services = () => {
   const transition = {
     duration: 1,
     type: "spring",
+  };
+
+  const handleRegisterDirect = () => {
+    navigate("/login");
   };
 
   return (
@@ -31,9 +36,9 @@ const Services = () => {
           <br />
           for your Gym membership experience
         </spane>
-        <a href=""/*{Guide}*/ download>
-          <button className="frontPageButton s-button">Download Guide</button>
-        </a>
+        <div>
+          <button className="frontPageButton s-button" onClick={() => handleRegisterDirect()}>Register FaceID</button>
+        </div>
       </div>
       {/* right */}
       <div className="cards">
