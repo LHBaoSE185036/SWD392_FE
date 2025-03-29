@@ -1,5 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
+import axios from 'axios';
+import http from 'https';
 import "../styles/UserTable.css";
+
 import { Modal, Button, Input, Upload } from "antd";
 import { AssignmentIndOutlined, DeleteOutline, DriveFileRenameOutline, UploadOutlined, VisibilityOutlined } from "@mui/icons-material";
 
@@ -39,12 +42,23 @@ const UserTable = () => {
     const fetchUsers = async () => {
         setLoading(true);
         try {
-            const response = await fetch(API_URL, {
-                method: "GET",
+            //const config = {
+            //    headers: { Authorization: `Bearer ${TOKEN}` }
+            //};
+            console.log(TOKEN);
+
+            const response = await axios.get(
+                'http://157.230.40.203:8080/gym-face-id-access/api/v1/customer/customers', {
                 headers: {
-                    "Authorization": `Bearer ${TOKEN}`,
+                    Authorization: `Bearer ${TOKEN}`,
                 },
             });
+            //const response = await fetch(API_URL, {
+            //    method: "GET",
+            //    headers: {
+            //        "Authorization": `Bearer ${TOKEN}`,
+            //    },
+            //});
 
             if (!response.ok) {
                 throw new Error("Failed to fetch users");
@@ -96,7 +110,7 @@ const UserTable = () => {
 
     const handleUpdateUser = async () => {
         try {
-            const response = await fetch(`${API_SINGLE_URL}/${selectedUser.customerId}`, {
+            const response = await fetch(`${API_SINGLE_URL}${selectedUser.customerId}`, {
                 method: "PUT",
                 headers: {
                     "Authorization": `Bearer ${TOKEN}`,

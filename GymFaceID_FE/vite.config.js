@@ -9,7 +9,7 @@ export default defineConfig({
             '/api': {
                 target: 'http://157.230.40.203:8080',
                 changeOrigin: true,
-                rewrite: (path) => path.replace(/^\/api/, '/gym-face-id-access/api/v1')
+                rewrite: (path) => path.replace(/^\/api/, 'gym-face-id-access/api/v1')
             }
         }
     }
